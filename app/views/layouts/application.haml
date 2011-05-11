@@ -1,0 +1,14 @@
+!!!
+%head
+  %title hacsoc @ cwru
+  = stylesheet_link_tag 'application'
+%body.bp
+  .two-col
+    #header
+      %h3 Header
+    #content
+      = yield 
+    #sidebar
+      %h3 sidebar
+    #footer
+      %h3 footer

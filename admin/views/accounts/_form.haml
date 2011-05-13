@@ -34,6 +34,17 @@
   =f.select :role, :options => access_control.roles
   %span.description Ex: a simple text
 
+.group
+  =f.label 'Viddler Username'
+  =f.error_message_on 'Viddler Name'
+  =f.text_field :vid_uname, :class => :text_field
+  %span.description Your username on viddler. Used for uploading and embedding videos.
+
+.group
+  =f.label 'Viddler Password'
+  =f.error_message_on 'viddler password'
+  =f.password_field :vid_pass, :class => :password_field
+  %span.description Your Viddler password.
 
 .group.navform.wat-cf
   =f.submit pat(:save), :class => :button

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 2) do
+ActiveRecord::Schema.define(:version => 4) do
 
   create_table "accounts", :force => true do |t|
     t.string "name"
@@ -18,18 +18,21 @@ ActiveRecord::Schema.define(:version => 2) do
     t.string "email"
     t.string "crypted_password"
     t.string "role"
+    t.string "vid_uname"
+    t.string "vid_pass"
   end
 
   create_table "talks", :force => true do |t|
-    t.string "title"
-    t.string "speaker"
-    t.date   "date"
-    t.string "s_descrip"
-    t.string "l_descrip"
-    t.string "thumb"
-    t.string "pics"
-    t.string "video"
-    t.string "slides"
+    t.string  "title"
+    t.string  "speaker"
+    t.date    "date"
+    t.string  "s_descrip"
+    t.string  "l_descrip"
+    t.string  "thumb"
+    t.string  "pics"
+    t.string  "video"
+    t.string  "slides"
+    t.integer "account_id"
   end
 
 end

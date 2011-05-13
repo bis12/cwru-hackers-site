@@ -14,6 +14,7 @@
           %th=mat(:account, :name)
           %th=mat(:account, :surname)
           %th=mat(:account, :email)
+          %th=mat(:account, 'Viddler Username')
           %th.last="&nbsp;"
         -@accounts.each do |account|
           %tr
@@ -21,6 +22,7 @@
             %td=account.name
             %td=account.surname
             %td=account.email
+            %td=account.vid_uname
             %td.last
               =button_to pat(:edit), url(:accounts, :edit, :id => account.id), :method => :get, :class => :button_to
               ="|"

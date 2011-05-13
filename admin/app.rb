@@ -1,24 +1,7 @@
-class CwruHackersSite < Padrino::Application
+class Admin < Padrino::Application
   register Padrino::Mailer
   register Padrino::Helpers
-  register CompassInitializer
-
-  enable :sessions
-
-  ##
-  # Caching support
-  #
-  # register Padrino::Cache
-  # enable :caching
-  #
-  # You can customize caching store engines:
-  #
-  #   set :cache, Padrino::Cache::Store::Memcache.new(::Memcached.new('127.0.0.1:11211', :exception_retry_limit => 1))
-  #   set :cache, Padrino::Cache::Store::Memcache.new(::Dalli::Client.new('127.0.0.1:11211', :exception_retry_limit => 1))
-  #   set :cache, Padrino::Cache::Store::Redis.new(::Redis.new(:host => '127.0.0.1', :port => 6379, :db => 0))
-  #   set :cache, Padrino::Cache::Store::Memory.new(50)
-  #   set :cache, Padrino::Cache::Store::File.new(Padrino.root('tmp', app_name.to_s, 'cache')) # default choice
-  #
+  register Padrino::Admin::AccessControl
 
   ##
   # Application configuration options
@@ -35,25 +18,16 @@ class CwruHackersSite < Padrino::Application
   # disable :flash              # Disables rack-flash (enabled by default if Rack::Flash is defined)
   # layout  :my_layout          # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
   #
+  set :login_page, "/admin/sessions/new"
+  disable :store_location
 
-  ##
-  # You can configure for a specified environment like:
-  #
-  #   configure :development do
-  #     set :foo, :bar
-  #     disable :asset_stamp # no asset timestamping for dev
-  #   end
-  #
+  access_control.roles_for :any do |role|
+    role.protect "/"
+    role.allow "/sessions"
+  end
 
-  ##
-  # You can manage errors like:
-  #
-  #   error 404 do
-  #     render 'errors/404'
-  #   end
-  #
-  #   error 505 do
-  #     render 'errors/505'
-  #   end
-  #
+  access_control.roles_for :admin do |role|
+    role.project_module :talks, "/talks"
+    role.project_module :accounts, "/accounts"
+  end
 end

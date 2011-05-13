@@ -1,0 +1,58 @@
+.group
+  =f.label :title
+  =f.error_message_on :title
+  =f.text_field :title, :class => :text_field
+  %span.description A title for the talk
+
+.group
+  =f.label :speaker
+  =f.error_message_on :speaker
+  =f.text_field :speaker, :class => :text_field
+  %span.description List of people who gave the talk, include the associated company here
+
+.group
+  =f.label :date
+  =f.error_message_on :date
+  =f.text_field :date, :class => :text_field
+  %span.description This will later be a date selection calendar
+
+.group
+  =f.label 'Short Description'
+  =f.error_message_on 'Short Description'
+  =f.text_area :s_descrip, :class => :text_area
+  %span.description A short description of the talk. In the range of 1-3 sentences.
+
+.group
+  =f.label 'Long Description'
+  =f.error_message_on 'Long Description'
+  =f.text_area :l_descrip, :class => :text_area
+  %span.description A longer description. If left blank, the short description will be both.
+
+.group
+  =f.label :thumb
+  =f.error_message_on :thumb
+  =f.text_field :thumb, :class => :text_field
+  %span.description This may end up going away.
+
+.group
+  =f.label :pics
+  =f.error_message_on :pics
+  =f.text_field :pics, :class => :text_field
+  %span.description make this an imgur upload?
+
+.group
+  =f.label :video
+  =f.error_message_on :video
+  =f.text_field :video, :class => :text_field
+  %span.description Ex: a simple text
+
+.group
+  =f.label :slides
+  =f.error_message_on :slides
+  =f.text_field :slides, :class => :text_field
+  %span.description also make this a simple upload
+
+
+.group.navform.wat-cf
+  =f.submit pat(:save), :class => :button
+  =f.submit pat(:cancel), :onclick => "window.location='#{url(:talks, :index)}';return false", :class => :button

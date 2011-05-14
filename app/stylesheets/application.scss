@@ -42,7 +42,7 @@ form {
   #footer {
     margin-top: 20px;
     margin-bottom: 20px;
-    color: #ddd;
+    color: #cdcdcd;
     font-size: 1.5em;
     @include column(24);}
   #content {
@@ -56,12 +56,21 @@ margin-right: auto;
 @import "compass/css3/border-radius";
 @import "compass/css3/box-shadow";
 @import "compass/css3/opacity";
+@import "compass/typography/lists/horizontal-list";
+
+@mixin hilite {
+  border: 7px solid $c_blue;
+  @include border-radius(4px);
+  @include box-shadow;
+  @include center;
+}
 
 #home {
   -webkit-transition: opacity .25s linear;
   -moz-transition: opacity .25s linear;
+  @include opacity(0.65);
   &:hover {
-    @include opacity(0.5);
+    @include opacity(1.0);
   }
 }
 
@@ -110,11 +119,26 @@ span#t_date {
   font-weight: bold;
 }
 
+ul.hor{
+  @include horizontal-list(0px);
+  li {
+    margin: 0 18px 18px 18px;
+    a {
+      @include hilite;
+      padding: 8px;
+      display: block;
+      background: $c_blue + #999;
+      text-decoration: none;
+      &:hover{
+        background: $c_blue + #aa8;
+        border-color: $c_blue + #778;
+      }
+    }
+  }
+}
+
 #big_vid {
-  border: 7px solid $c_blue;
-  @include border-radius(4px);
-  @include box-shadow;
-  @include center;
+  @include hilite;
   width: 720px;
   height: 480px;
   overflow: clip;
@@ -125,8 +149,8 @@ span#t_date {
 }
 
 @mixin bottom-col {
-  border-top: #eee solid 1px;
-  border-left: #eee solid 1px;
+  border-top: #eee solid 2px;
+  border-left: #eee solid 2px;
   padding: 5px 0 0 10px;
   @include border-radius;
 }

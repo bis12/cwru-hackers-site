@@ -1,5 +1,16 @@
-%h2 
-  = @talk.title
-This talk is about stuff
-%br
-= @embed
+#top_info
+  %span.title #{@talk.title}
+  %span#t_date  #{@talk.date.strftime '%A %B %d, %Y'}
+  %hr
+#big_vid
+  <iframe src="#{@embed}" width="720" height="480" frameborder="0" scrolling="no" allowfullscreen></iframe><embed type="application/x-shockwave-flash" src="http://a.blip.tv/api.swf#h5t8gruARgI" style="display:none"></embed>
+
+#lower
+  #left-col
+    %span.s_title Description
+    %p
+      = @talk.l_descrip
+  #right-col
+    %span.s_title Meta
+    %p
+      There will be more stuff here, such as the sponsors and whatnot.

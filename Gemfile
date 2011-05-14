@@ -4,7 +4,9 @@ source :rubygems
 gem 'rake'
 gem 'rack-flash'
 gem 'thin' # or mongrel
-gem 'viddler' 
+gem 'bliptv' 
+gem 'rest-client'
+gem 'mime-types'
 
 # Component requirements
 gem 'bcrypt-ruby', :require => "bcrypt"

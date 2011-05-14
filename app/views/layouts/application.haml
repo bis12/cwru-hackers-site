@@ -3,13 +3,21 @@
   %title hacsoc @ cwru
   = favicon_tag 'favicon.ico'
   = stylesheet_link_tag 'application'
-%body.bp
-  .two-col
+%body
+  #container
     #header
-      %h3 Header
+      %a{:href => 'http://goto.case.edu/'}
+        = image_tag 'hacker-society-small.png', {:width => '30%'}
+      %ul#topbar
+        %li 
+          %a{:href => 'http://acm.case.edu/'} ACM 
+        %li 
+          %a{:href => 'http://ieee.case.edu/'} IEEE
+        %li 
+          %a{:href => 'http://eecs.case.edu/'} EECS
+        %li 
+          %a{:href => 'http://case.edu/'} CWRU
     #content
       = yield 
-    #sidebar
-      %h3 sidebar
     #footer
-      %h3 footer
+      The Hacker Society at Case Western Reserve University 

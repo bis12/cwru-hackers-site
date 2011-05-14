@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 4) do
+ActiveRecord::Schema.define(:version => 5) do
 
   create_table "accounts", :force => true do |t|
     t.string "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 4) do
     t.string "role"
     t.string "vid_uname"
     t.string "vid_pass"
+    t.string "vid_api_key"
   end
 
   create_table "talks", :force => true do |t|

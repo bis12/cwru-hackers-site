@@ -35,16 +35,16 @@
   %span.description Ex: a simple text
 
 .group
-  =f.label 'Viddler Username'
-  =f.error_message_on 'Viddler Name'
+  =f.label 'Blip.tv Username'
+  =f.error_message_on 'Blip.tv Name'
   =f.text_field :vid_uname, :class => :text_field
-  %span.description Your username on viddler. Used for uploading and embedding videos.
+  %span.description Your username on Blip.tv. Used for uploading and embedding videos.
 
 .group
-  =f.label 'Viddler Password'
-  =f.error_message_on 'viddler password'
+  =f.label 'Blip.tv Password'
+  =f.error_message_on 'Blip.tv password'
   =f.password_field :vid_pass, :class => :password_field
-  %span.description Your Viddler password.
+  %span.description Your Blip.tv password.
 
 .group.navform.wat-cf
   =f.submit pat(:save), :class => :button

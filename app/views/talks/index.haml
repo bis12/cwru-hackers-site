@@ -1,3 +1,4 @@
 %h3 Talks
 - @talks.each do |talk|
-  = talk.title
+  %h2 
+    = link_to talk.title, "talks/#{talk.id}"

@@ -19,25 +19,111 @@
 // when stylesheets are concatenated together.
 @include blueprint-scaffolding("body.bp");
 
-body.bp {
+$c_blue: #447;
+
+body {
   @include blueprint-typography(true);
   @include blueprint-utilities;
   @include blueprint-debug;
   @include blueprint-interaction;
-  // Remove the scaffolding when you're ready to start doing visual design.
-  // Or leave it in if you're happy with how blueprint looks out-of-the-box
+    border-top: 3px solid $c_blue;
 }
 
-form.bp {
+form {
   @include blueprint-form;
 }
 
-.two-col {
+#container {
   @include container;
-  background-color: #cccccc;
-  #header, #footer {
+  #header {
+    padding-top: 10px;
+    margin-bottom: 20px;
     @include column(24); }
-  #sidebar {
-    @include column(3); }
+  #footer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #ddd;
+    font-size: 1.5em;
+    @include column(24);}
   #content {
-    @include column(21, true); } }
+    @include column(24); } }
+
+@mixin center {
+margin-left: auto;
+margin-right: auto;
+}
+
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+
+ul#topbar {
+  float: right;
+  list-style: none;
+  position: relative;
+  bottom: -25px;
+  font-size: 1.2em;
+  font-weight: bold;
+  li {
+    display: inline-block;
+    margin-left: 3px;
+    a {
+      background-color: #EEE;
+      border: 1px solid #CCC;
+      @include border-radius(2px);
+      padding: 5px;
+      color: #CCC;
+      text-decoration: none;
+      &:hover{
+        background-color: $c_blue;
+        border-color: #333 ;
+      }
+    }
+  }
+}
+
+span.title {
+  font-size: 2.5em;
+}
+
+span.s_title {
+  font-size: 2.0em;
+}
+
+span#t_date {
+  margin-left: 45px;
+  font-weight: bold;
+}
+
+#big_vid {
+  border: 7px solid $c_blue;
+  @include border-radius(4px);
+  @include box-shadow;
+  @include center;
+  width: 720px;
+  height: 480px;
+  overflow: clip;
+}
+
+#lower {
+  padding-top: 30px;
+}
+
+@mixin bottom-col {
+  border-top: #eee solid 1px;
+  border-left: #eee solid 1px;
+  padding: 5px 0 0 10px;
+  @include border-radius;
+}
+
+#left-col {
+  float: left;
+  width: 400px;
+  @include bottom-col;
+}
+
+#right-col {
+  float: right;
+  width: 400px;
+  @include bottom-col;
+}
+

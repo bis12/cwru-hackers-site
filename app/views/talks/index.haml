@@ -1,4 +1,11 @@
-%h3 Talks
+%span.title Talks
+%hr
 - @talks.each do |talk|
-  %h2 
-    = link_to talk.title, "talks/#{talk.id}"
+  .talk-box
+    .right-t
+      stuff on right? such as the thumbnail and sponsors and time and...
+    .left-t
+    %h2 
+      = link_to talk.title, "/talks/#{talk.id}"
+    %p
+      = talk.s_descrip

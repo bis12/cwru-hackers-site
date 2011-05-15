@@ -124,14 +124,12 @@ ul.hor{
   li {
     margin: 0 18px 18px 18px;
     a {
-      @include hilite;
-      padding: 8px;
       display: block;
-      background: $c_blue + #999;
       text-decoration: none;
+      border-left: 3px double #eee;
+      padding: 3px;
       &:hover{
-        background: $c_blue + #aa8;
-        border-color: $c_blue + #778;
+        color: $c_blue + #778;
       }
     }
   }

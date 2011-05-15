@@ -4,6 +4,10 @@
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
     %title Padrino Admin
     =stylesheet_link_tag :base, "themes/blue/style"
+    =javascript_include_tag 'jq'
+    =stylesheet_link_tag 'jq-ui'
+    =javascript_include_tag 'jq-ui'
+    =yield_content :assets
   %body
     #container
       #header

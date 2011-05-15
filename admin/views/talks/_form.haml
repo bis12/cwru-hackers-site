@@ -1,3 +1,11 @@
+- content_for :assets do
+  :javascript
+    $(function() {
+                $( "#datepicker" ).datepicker({
+                        showButtonPanel: true
+                });
+      });
+
 .group
   =f.label :title
   =f.error_message_on :title
@@ -13,8 +21,7 @@
 .group
   =f.label :date
   =f.error_message_on :date
-  =f.text_field :date, :class => :text_field
-  %span.description This will later be a date selection calendar
+  =f.text_field :date, :class => :text_field, :id => 'datepicker'
 
 .group
   =f.label 'Short Description'
@@ -29,10 +36,10 @@
   %span.description A longer description. If left blank, the short description will be both.
 
 .group
-  =f.label :thumb
-  =f.error_message_on :thumb
+  =f.label 'Thumbnail'
+  =f.error_message_on 'thumbnail'
   =f.text_field :thumb, :class => :text_field
-  %span.description This may end up going away.
+  %span.description Any image you upload will automatically be converted to necessary sizes. Please upload a hi-res one.
 
 .group
   =f.label :pics

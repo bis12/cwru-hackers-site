@@ -35,6 +35,11 @@ Admin.controllers :talks do
     end
   end
 
+  post :upload_images do
+	  #TODO: actually implement uploading
+	  return '{success:true}'
+  end
+
   delete :destroy, :with => :id do
     talk = Talk.find(params[:id])
     if talk.destroy

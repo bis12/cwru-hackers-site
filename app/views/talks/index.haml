@@ -3,9 +3,10 @@
 - @talks.each do |talk|
   .talk-box
     .right-t
-      stuff on right? such as the thumbnail and sponsors and time and...
+      :textile
+        stuff on right? such as the thumbnail and sponsors and time and...
     .left-t
     %h2 
       = link_to talk.title, "/talks/#{talk.id}"
-    %p
-      = talk.s_descrip
+    :textile
+      #{talk.s_descrip}

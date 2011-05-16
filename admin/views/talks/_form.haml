@@ -27,13 +27,13 @@
   =f.label 'Short Description'
   =f.error_message_on 'Short Description'
   =f.text_area :s_descrip, :class => :text_area
-  %span.description A short description of the talk. In the range of 1-3 sentences.
+  %span.description A short description of the talk. In the range of 1-3 sentences.  Output parsed in <a href="http://redcloth.org/">textile</a>.
 
 .group
   =f.label 'Long Description'
   =f.error_message_on 'Long Description'
   =f.text_area :l_descrip, :class => :text_area
-  %span.description A longer description. If left blank, the short description will be both.
+  %span.description A longer description. Leave bland to use short description here. Output parsed in <a href="http://redcloth.org/">textile</a>.
 
 .group
   =f.label 'Thumbnail'

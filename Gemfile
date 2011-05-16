@@ -7,6 +7,7 @@ gem 'thin' # or mongrel
 gem 'bliptv' 
 gem 'rest-client'
 gem 'mime-types'
+gem 'RedCloth'
 
 # Component requirements
 gem 'bcrypt-ruby', :require => "bcrypt"

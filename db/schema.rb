@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(:version => 5) do
     t.string  "l_descrip"
     t.string  "thumb"
     t.string  "pics"
-    t.string  "video"
     t.string  "slides"
     t.integer "account_id"
+    t.string  "video"
   end
 
 end

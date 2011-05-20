@@ -2,13 +2,27 @@
   = stylesheet_link_tag 'fileuploader'
   = javascript_include_tag 'fileuploader'
   :javascript
+    var selector = '<select name="asset_type" class="select">'+
+    '<option value="image">Image</option>'+
+    '<option value="video">Video</option>'+
+    '<option value="slides">Slides</option>'+
+    '<option value="thumb">Thumbnail</option>'+
+    '</select>'
     $(function() {
                 $( "#datepicker" ).datepicker({
                         showButtonPanel: true
                 });
                 var uploader = new qq.FileUploader({
                         element: document.getElementById('file-uploader'),
-                        action: '/admin/talks/upload_images'
+                        action: '/admin/talks/upload_images',
+                        fileTemplate: '<li>' +          
+                            '<span class="qq-upload-select">' +selector+'</span>' +
+                            '<span class="qq-upload-file"></span>' +
+                            '<span class="qq-upload-spinner"></span>' +
+                            '<span class="qq-upload-size"></span>' +
+                            '<a class="qq-upload-cancel" href="#">Cancel</a>' +
+                            '<span class="qq-upload-failed-text">Failed</span>' +
+                          '</li>',         
                         });
       });
 

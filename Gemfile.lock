@@ -93,9 +93,6 @@ GEM
     padrino-mailer (0.9.27)
       mail (>= 2.2.0)
       padrino-core (= 0.9.27)
-    paperclip (2.3.11)
-      activerecord (>= 2.3.0)
-      activesupport (>= 2.3.2)
     polyglot (0.3.1)
     rack (1.2.2)
     rack-flash (0.1.1)
@@ -153,7 +150,6 @@ DEPENDENCIES
   haml
   mime-types
   padrino (= 0.9.27)
-  paperclip
   rack-flash
   rack-test
   rake

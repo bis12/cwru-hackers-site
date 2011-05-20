@@ -44,11 +44,6 @@ form {
     margin-bottom: 20px;
     color: #cdcdcd;
     font-size: 1.5em;
-    a {
-        margin-left: 30px;
-        color: #adadad;
-        font-size: 0.8em;
-    }
     @include column(24);}
   #content {
     @include column(24); } }

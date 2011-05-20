@@ -10,7 +10,7 @@ CwruHackersSite.controllers :talks do
 		@talk = Talk.find params[:id]
 		account = @talk.account
 		to_emb = BlipTV::Video.new @talk.video
-		@embed = to_emb.get_attributes['embedUrl'].split('/')[4]
+		@embed = to_emb.get_attributes['embedUrl']
 	  	render 'talks/talk'
 	  else
 		  render 'talks/notalk'

@@ -1,3 +1,5 @@
+require 'tempfile'
+
 Admin.controllers :talks do
 
   get :index do
@@ -37,9 +39,17 @@ Admin.controllers :talks do
 
   post :upload_images do
 	  talk = Talk.find 4
-	  talk.video = params[:file]
+	  input = request.body
+	  if input.kind_of? StringIO 
+		  file = Tempfile.new params[:qqfile]
+		  while not input.eof?
+			  file.write input.read.force_encoding('UTF-8')
+		  end
+	  else
+		  file = input
+	  end
+	  talk.video = file
 	  talk.save!
-	  puts talk.video.url
 	  return '{success:true}'
   end
 

@@ -14,6 +14,11 @@ puts "=> Located #{Padrino.bundle} Gemfile for #{Padrino.env}"
 # Add your before load hooks here
 #
 Padrino.before_load do
+	Sinatra::Application.public= "#{PADRINO_ROOT}/public"
+
+        ActiveSupport.on_load :active_record do
+          require 'carrierwave/orm/activerecord'
+        end
 end
 
 ##

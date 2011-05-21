@@ -8,7 +8,7 @@ gem 'bliptv'
 gem 'rest-client'
 gem 'mime-types'
 gem 'RedCloth'
-gem 'paperclip'
+gem 'carrierwave'
 
 # Component requirements
 gem 'bcrypt-ruby', :require => "bcrypt"

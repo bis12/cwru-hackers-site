@@ -45,10 +45,6 @@ class CwruHackersSite < Padrino::Application
   #   end
   #
 
-  configure :development do
-	  Paperclip.options[:command_path] = "/usr/bin/"
-  end
-
   ##
   # You can manage errors like:
   #

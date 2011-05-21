@@ -25,6 +25,8 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.27)
       xpath (~> 0.1.3)
+    carrierwave (0.5.4)
+      activesupport (~> 3.0)
     celerity (0.8.9)
     childprocess (0.1.8)
       ffi (~> 1.0.6)
@@ -93,9 +95,6 @@ GEM
     padrino-mailer (0.9.27)
       mail (>= 2.2.0)
       padrino-core (= 0.9.27)
-    paperclip (2.3.11)
-      activerecord (>= 2.3.0)
-      activesupport (>= 2.3.2)
     polyglot (0.3.1)
     rack (1.2.2)
     rack-flash (0.1.1)
@@ -148,12 +147,12 @@ DEPENDENCIES
   bcrypt-ruby
   bliptv
   capybara
+  carrierwave
   compass
   cucumber
   haml
   mime-types
   padrino (= 0.9.27)
-  paperclip
   rack-flash
   rack-test
   rake

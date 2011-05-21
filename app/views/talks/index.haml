@@ -6,7 +6,11 @@
       :textile
         stuff on right? such as the thumbnail and sponsors and time and...
     .left-t
-    %h2 
+    %span.talk_name
       = link_to talk.title, "/talks/#{talk.id}"
+    %br
+    %span.date
+      = talk.date.strftime '%A %B %d, %Y'
+    %hr
     :textile
       #{talk.s_descrip}

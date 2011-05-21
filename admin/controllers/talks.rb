@@ -36,7 +36,10 @@ Admin.controllers :talks do
   end
 
   post :upload_images do
-	  #TODO: actually implement uploading
+	  talk = Talk.find 4
+	  talk.video = params[:file]
+	  talk.save!
+	  puts talk.video.url
 	  return '{success:true}'
   end
 

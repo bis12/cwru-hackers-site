@@ -104,6 +104,17 @@ span.title {
   font-size: 2.5em;
 }
 
+span.talk_name {
+  font-size: 1.8em;
+  a {
+    text-decoration: none;
+  }
+}
+
+span.date {
+  font-weight: bold;
+}
+
 a#tb {
   float: right;
   position: relative;

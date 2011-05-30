@@ -18,10 +18,10 @@ gem 'activerecord', :require => "active_record"
 gem 'sqlite3'
 
 # Test requirements
-gem 'rspec', :group => "test"
-gem 'capybara', :group => "test"
-gem 'cucumber', :group => "test"
-gem 'rack-test', :require => "rack/test", :group => "test"
+#gem 'rspec', :group => "test"
+#gem 'capybara', :group => "test"
+#gem 'cucumber', :group => "test"
+#gem 'rack-test', :require => "rack/test", :group => "test"
 
 
 # Padrino

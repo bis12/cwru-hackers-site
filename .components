@@ -1,6 +1,6 @@
 --- 
 :orm: activerecord
-:test: cucumber
+:test: none
 :mock: none
 :script: jquery
 :renderer: haml

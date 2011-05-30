@@ -74,6 +74,22 @@ margin-right: auto;
   }
 }
 
+#nav {
+  float: right;
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #ccc;
+    border-left: 3px solid #ddd;
+    padding: 3px;
+    margin: 3px;
+    font-size: 0.8em;
+    &:hover {
+      border-color: #bbbbbb;
+    }
+  }
+}
+
 ul#topbar {
   float: right;
   list-style: none;
@@ -132,8 +148,14 @@ span#t_date {
 
 ul.hor{
   @include horizontal-list(0px);
+  margin-bottom: 15px;
   li {
-    margin: 0 18px 18px 18px;
+    -webkit-transition: opacity .25s linear;
+    -moz-transition: opacity .25s linear;
+    &:hover {
+      @include opacity(0.8);
+    }
+    margin: 0 18px 0 18px;
     width: 20%;
     .left {
       float: left;
@@ -148,6 +170,7 @@ ul.hor{
       @include opacity(0.85);
     }
     a {
+      display: block;
       text-decoration: none;
     }
   }

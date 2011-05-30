@@ -3,8 +3,7 @@
 - @talks.each do |talk|
   .talk-box
     .right-t
-      :textile
-        stuff on right? such as the thumbnail and sponsors and time and...
+      = image_tag "#{talk.thumb}", {:height => 80}
     .left-t
     %span.talk_name
       = link_to talk.title, "/talks/#{talk.id}"

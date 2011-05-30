@@ -134,13 +134,29 @@ ul.hor{
   @include horizontal-list(0px);
   li {
     margin: 0 18px 18px 18px;
+    width: 20%;
+    .left {
+      float: left;
+      border-left: 3px double #eee;
+      padding-left: 5px;
+      &:hover{
+        border-color: #ddd;
+      }
+    }
+    .right {
+      float: right;
+      -webkit-transition: opacity .25s linear;
+      -moz-transition: opacity .25s linear;
+      @include opacity(0.55);
+      &:hover {
+          @include opacity(0.90);
+      }
+    }
     a {
       display: block;
       text-decoration: none;
-      border-left: 3px double #eee;
-      padding: 3px;
       &:hover{
-        color: $c_blue + #778;
+        color: $c_blue + #667;
       }
     }
   }
@@ -185,5 +201,6 @@ ul.hor{
   }
   .right-t {
     float: right;
+    padding-bottom: 4px;
   }
 }

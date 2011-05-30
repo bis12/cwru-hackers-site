@@ -13,7 +13,7 @@ CwruHackersSite.controllers :talks do
 		@embed = to_emb.get_attributes['embedUrl']
 	  	render 'talks/talk'
 	  else
-		  render 'talks/notalk'
+		render 'talks/notalk'
 	  end
   end
 

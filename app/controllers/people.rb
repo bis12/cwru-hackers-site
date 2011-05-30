@@ -4,19 +4,13 @@ CwruHackersSite.controllers :people do
 	  render 'people/index'
   end
 
-  # get :sample, :map => "/sample/url", :provides => [:any, :js] do
-  #   case content_type
-  #     when :js then ...
-  #     else ...
-  # end
-
-  # get :foo, :with => :id do
-  #   "Maps to url '/foo/#{params[:id]}'"
-  # end
-
-  # get "/example" do
-  #   "Hello world!"
-  # end
-
+  get :person, :map => '/people/:id' do
+	  if Person.exists? params[:id]
+		  @person = Person.find params[:id]
+		  render 'people/person'
+	  else
+		  render 'people/noperson'
+	  end
+  end
   
 end

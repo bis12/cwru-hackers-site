@@ -1,0 +1,14 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first=link_to pat(:list), url(:sponsors, :index)
+      %li.active=link_to pat(:new), url(:sponsors, :new)
+  .content
+    %h2.title
+      =pat(:new)
+      =mt(:sponsor)
+    .inner
+      -form_for :sponsor, url(:sponsors, :create), :class => :form, :multipart => true do |f|
+        =partial "sponsors/form", :locals => { :f => f }
+
+-content_for :sidebar, partial("base/sidebar")

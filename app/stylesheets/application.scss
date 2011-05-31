@@ -27,6 +27,7 @@ body {
   @include blueprint-debug;
   @include blueprint-interaction;
     border-top: 3px solid $c_blue;
+    background-color: #f9f9fc;
 }
 
 form {

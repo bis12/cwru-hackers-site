@@ -1,0 +1,33 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:sponsors, :index)
+      %li=link_to pat(:new), url(:sponsors, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:sponsors)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:sponsor, :id)
+          %th=mat(:sponsor, :name)
+          %th=mat(:sponsor, :description)
+          %th=mat(:sponsor, :logo)
+          %th=mat(:sponsor, :website)
+          %th.last="&nbsp;"
+        -@sponsors.each do |sponsor|
+          %tr
+            %td.first=sponsor.id
+            %td=sponsor.name
+            %td=sponsor.description
+            %td=image_tag sponsor.logo.url, {:width => 40, :heigh => 40}
+            %td=link_to sponsor.website, sponsor.website
+            %td.last
+              =button_to pat(:edit), url(:sponsors, :edit, :id => sponsor.id), :method => :get, :class => :button_to
+              ="|"
+              =button_to pat(:delete), url(:sponsors, :destroy, :id => sponsor.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")

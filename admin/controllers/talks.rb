@@ -40,14 +40,7 @@ Admin.controllers :talks do
   post :upload_images do
 	  talk = Talk.find 4
 	  input = request.body
-	  if input.kind_of? StringIO 
-		  file = Tempfile.new params[:qqfile]
-		  while not input.eof?
-			  file.write input.read.force_encoding('UTF-8')
-		  end
-	  else
-		  file = input
-	  end
+	  file = upload_string_to_file input
 	  talk.video = file
 	  talk.save!
 	  return '{success:true}'

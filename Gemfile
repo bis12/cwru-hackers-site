@@ -9,6 +9,7 @@ gem 'rest-client'
 gem 'mime-types'
 gem 'RedCloth'
 gem 'carrierwave'
+gem 'rmagick'
 
 # Component requirements
 gem 'bcrypt-ruby', :require => "bcrypt"

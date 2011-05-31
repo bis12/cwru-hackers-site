@@ -1,0 +1,35 @@
+.group
+  =f.label :name
+  =f.error_message_on :name
+  =f.text_field :name, :class => :text_field
+
+.group
+  =f.label :description
+  =f.error_message_on :description
+  ~f.text_area :description, :class => :text_area
+  %span.description A short description of who they are, what they do, and maybe their relation to hacsoc.
+
+.group
+  =f.label :logo
+  %br
+  -if @sponsor.logo?
+    =image_tag @sponsor.logo.url, {:width => 150, :height => 150, :style => 'border: 2px solid #777; margin: 10px; margin-left: 100px;'}
+    %br
+    = f.check_box :remove_logo
+    %span Remove Logo
+    %br
+  =f.error_message_on :logo
+  =f.file_field :logo
+  %span.description Image file to be used for logo (jpg, jpeg, gif, png)
+
+.group
+  =f.label :website
+  =f.error_message_on :website
+  =f.text_field :website, :class => :text_field
+  %span.description A link to their website. Include the http://
+  -# TODO: autoinclude http:// so the user doesn't have to care
+
+
+.group.navform.wat-cf
+  =f.submit pat(:save), :class => :button
+  =f.submit pat(:cancel), :onclick => "window.location='#{url(:sponsors, :index)}';return false", :class => :button

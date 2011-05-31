@@ -19,6 +19,10 @@ Padrino.before_load do
         ActiveSupport.on_load :active_record do
           require 'carrierwave/orm/activerecord'
         end
+
+	CarrierWave.configure do |config| 
+		config.root = "#{Dir.pwd}/public/" 
+	end 
 end
 
 ##

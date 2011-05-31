@@ -27,7 +27,20 @@ class Admin < Padrino::Application
   end
 
   access_control.roles_for :admin do |role|
+    role.project_module :sponsors, "/sponsors"
     role.project_module :talks, "/talks"
     role.project_module :accounts, "/accounts"
   end
+end
+
+def upload_string_to_file input
+	  if input.kind_of? StringIO 
+		  file = Tempfile.new params[:qqfile]
+		  while not input.eof?
+			  file.write input.read.force_encoding('UTF-8')
+		  end
+	  else
+		  file = input
+	  end
+	  return file
 end

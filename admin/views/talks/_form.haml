@@ -68,6 +68,14 @@
   =f.text_field :slides, :class => :text_field
   %span.description also make this a simple upload
 
+.group
+  =f.label "Sponsors"
+  -@sponsors.each do |sponsor|
+    .box
+      = f.check_box :"sponsors[#{sponsor.id}]", :checked => @sponsorship_map.has_key?("#{sponsor.id}")
+      %span= sponsor.name
+      %br
+      =image_tag sponsor.logo.url, {:width => 30, :height => 30}
 
 .group.navform.wat-cf
   =f.submit pat(:save), :class => :button

@@ -9,10 +9,21 @@ Admin.controllers :talks do
 
   get :new do
     @talk = Talk.new
+    @sponsors = Sponsor.all
     render 'talks/new'
   end
 
   post :create do
+    sponsors = params[:talk][:sponsors]
+    sponsors.each do |sponsor|
+	    if sponsor[1].eql? "1" 
+		spons = Sponsorship.new
+		spons.talk_id = params[:id]
+		spons.sponsor_id = sponsor[0]
+		spons.save
+	    end
+    end
+    params[:talk].delete 'sponsors'
     @talk = Talk.new(params[:talk])
     if @talk.save
       flash[:notice] = 'Talk was successfully created.'
@@ -24,10 +35,30 @@ Admin.controllers :talks do
 
   get :edit, :with => :id do
     @talk = Talk.find(params[:id])
+    @sponsors = Sponsor.all
+    sponsorships = Sponsorship.where "talk_id=#{params[:id]}"
+    @sponsorship_map = {}
+    sponsorships.each do |spons|
+	    @sponsorship_map[spons.sponsor_id] = true
+    end
     render 'talks/edit'
   end
 
   put :update, :with => :id do
+    sponsors = params[:talk][:sponsors]
+    sponsors.each do |sponsor|
+	    #TODO: Fix injection possibilities, and make more activerecordy
+	    if sponsor[1].eql? "1" #TODO: make it not duplicate on new!
+		spons = Sponsorship.new
+		spons.talk_id = params[:id]
+		spons.sponsor_id = sponsor[0]
+		spons.save
+	    else
+		 spons = Sponsorship.where "talk_id=#{params[:id]} and sponsor_id=#{sponsor[0]}"
+		 Sponsorship.delete spons
+	    end
+    end
+    params[:talk].delete 'sponsors'
     @talk = Talk.find(params[:id])
     if @talk.update_attributes(params[:talk])
       flash[:notice] = 'Talk was successfully updated.'

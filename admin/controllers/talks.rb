@@ -48,12 +48,13 @@ Admin.controllers :talks do
     sponsors = params[:talk][:sponsors]
     sponsors.each do |sponsor|
 	    #TODO: Fix injection possibilities, and make more activerecordy
-	    if sponsor[1].eql? "1" #TODO: make it not duplicate on new!
+	    if sponsor[1].eql? "1" and not Sponsorship.where("talk_id=#{params[:id]} and sponsor_id=#{sponsor[0]}").exists?
+ 
 		spons = Sponsorship.new
 		spons.talk_id = params[:id]
 		spons.sponsor_id = sponsor[0]
 		spons.save
-	    else
+	    elsif sponsor[1].eql? "0"
 		 spons = Sponsorship.where "talk_id=#{params[:id]} and sponsor_id=#{sponsor[0]}"
 		 Sponsorship.delete spons
 	    end

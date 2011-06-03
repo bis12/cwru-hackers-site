@@ -205,3 +205,14 @@ ul.hor{
     padding-bottom: 4px;
   }
 }
+
+ul.space{
+  @include horizontal-list(0px);
+  margin-bottom: 8px;
+  li {
+    width: 40px;
+    height: 40px;
+    margin: 3px;
+    border: 3px double #ccc;
+  }
+}

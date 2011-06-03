@@ -1,23 +1,33 @@
 !!!
-%head
-  %title hacsoc @ cwru
-  = favicon_tag 'favicon.ico'
-  = stylesheet_link_tag 'application'
-%body
-  #container
-    #header
-      %a#home{:href => '/'}
-        = image_tag 'hacker-society-small.png', {:width => '30%'}
-      %ul#topbar
-        %li 
-          %a{:href => 'http://acm.case.edu/'} ACM 
-        %li 
-          %a{:href => 'http://ieee.case.edu/'} IEEE
-        %li 
-          %a{:href => 'http://eecs.case.edu/'} EECS
-        %li 
-          %a{:href => 'http://case.edu/'} CWRU
-    #content
-      = yield 
-    #footer
-      The Hacker Society at Case Western Reserve University 
+%html
+  %head
+    %title hacsoc @ cwru
+    = favicon_tag 'favicon.ico'
+    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'tipsy'
+    = javascript_include_tag 'jquery'
+    = javascript_include_tag 'application'
+    = javascript_include_tag 'jquery.tipsy'
+    =yield_content :assets
+    :javascript
+      $(function() {
+        $('a[rel=tipsy]').tipsy({gravity: 'n'});
+      });
+  %body
+    #container
+      #header
+        %a#home{:href => '/'}
+          = image_tag 'hacker-society-small.png', {:width => '30%'}
+        %ul#topbar
+          %li 
+            %a{:href => 'http://acm.case.edu/'} ACM 
+          %li 
+            %a{:href => 'http://ieee.case.edu/'} IEEE
+          %li 
+            %a{:href => 'http://eecs.case.edu/'} EECS
+          %li 
+            %a{:href => 'http://case.edu/'} CWRU
+      #content
+        = yield 
+      #footer
+        The Hacker Society at Case Western Reserve University 

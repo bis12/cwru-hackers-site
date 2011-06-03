@@ -9,13 +9,27 @@
 #lower
   #left-col
     %span.s_title Description
+    -#TODO: Fix the extra space that is added into the uploaded text. It breaks the headers after an extra save
     :textile
       #{@talk.l_descrip}
   #right-col
     %span.s_title Meta
     :textile
-      There will be more stuff here, such as the sponsors and whatnot.
-    - @talk.sponsors.each do |sponsor|
-      .box
-        =image_tag sponsor.logo.url, {:width => 30, :height => 30}
-        %h3= sponsor.name
+      Other information about the talk, including the speaker, the slides, and our sponsors are below in this column.
+    %hr
+    %h3 Sponsors
+    %ul.space
+      - @talk.sponsors.each do |sponsor|
+        %li
+          %a{:href => sponsor.website, :rel => 'tipsy', :title => "#{sponsor.name}: #{sponsor.description}"}
+            =image_tag sponsor.logo.url, {:width => 40, :height => 40}
+    %hr
+    %span.s_title Speaker
+    :textile
+      name...
+      
+      The speakers will become a Person model, and a bit will be flipped if they are a student or not.
+    %hr
+    %span.s_title Pictures
+    %hr
+    %span.s_title Slides

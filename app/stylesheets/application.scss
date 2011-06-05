@@ -149,30 +149,32 @@ span#t_date {
 
 ul.hor{
   @include horizontal-list(0px);
-  margin-bottom: 15px;
   li {
-    -webkit-transition: opacity .25s linear;
-    -moz-transition: opacity .25s linear;
-    &:hover {
-      @include opacity(0.8);
-    }
-    margin: 0 18px 0 18px;
+    margin: 0 18px 18px 18px;
     width: 20%;
     .left {
       float: left;
-      border-left: 3px double #dde;
+      border-left: 3px double #eee;
       padding-left: 5px;
       &:hover{
-        border-color: #ccc;
+        border-color: #ddd;
       }
     }
     .right {
       float: right;
-      @include opacity(0.85);
+      -webkit-transition: opacity .25s linear;
+      -moz-transition: opacity .25s linear;
+      @include opacity(0.55);
+      &:hover {
+          @include opacity(0.90);
+      }
     }
     a {
       display: block;
       text-decoration: none;
+      &:hover{
+        color: $c_blue + #667;
+      }
     }
   }
 }

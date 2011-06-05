@@ -1,0 +1,22 @@
+= link_to 'Go back to list of people', '/people', :id => 'tb' 
+%span.title= @person.name
+%hr
+#people-page
+  .right
+    = image_tag @person.pic, {:width => 200, :height => 250}
+  .left
+    :textile
+      Major: Computer Science
+      Graduation Year: 2013
+      Website: "brianstack.net":http://brianstack.net/
+      Resume: "Download PDF":http://
+      
+    .tags
+      :textile
+        Tags: "one":http:// "two":http:// "three":http:// "4":http:// "five":http://
+    .descrip
+      :textile
+        Eventually, these fields will be populated by reading in a yaml file with any
+        number of arbitrary fields.  The content will be dynamically generated and 
+        placed here.  The yaml files should be easy to edit for anyone and they will
+        be forkable on github? so that people can update their own profiles.

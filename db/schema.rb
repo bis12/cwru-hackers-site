@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(:version => 20110603033432) do
     t.string "vid_api_key"
   end
 
+  create_table "people", :force => true do |t|
+    t.string "name"
+    t.string "pic"
+    t.string "yaml"
+  end
+
   create_table "sponsors", :force => true do |t|
     t.string "name"
     t.text   "description"

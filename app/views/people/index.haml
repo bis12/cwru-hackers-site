@@ -1,0 +1,8 @@
+%span.title People
+%hr
+- @people.each do |person|
+  .person-box
+    = link_to person.name, "people/#{person.id}"
+    %br
+    Also in here will be the persons tags, and maybe a thumbnail of their photo?
+    Up top will be a search/filter box and maybe some other selectors

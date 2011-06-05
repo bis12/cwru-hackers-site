@@ -250,7 +250,7 @@ ul.hor{
   }
 }
 
-ul.space{
+.space{
   @include horizontal-list(0px);
   margin-bottom: 8px;
   li {

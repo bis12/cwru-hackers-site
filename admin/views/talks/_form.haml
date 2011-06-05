@@ -59,8 +59,8 @@
 .group
   =f.label :video
   =f.error_message_on :video
-  =f.text_field :video_ext, :class => :text_field
-  %span.description Ex: a simple text
+  =f.file_field :video
+  %span.description The video of the talk
 
 .group
   =f.label :slides

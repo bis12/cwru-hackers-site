@@ -8,12 +8,11 @@ CwruHackersSite.controllers :talks do
   get :talk, :map => '/talks/:id' do
 	  if Talk.exists? params[:id] 
 		@talk = Talk.find params[:id]
-		account = @talk.account
-		to_emb = BlipTV::Video.new @talk.video_ext
+		to_emb = BlipTV::Video.new @talk.video
 		@embed = to_emb.get_attributes['embedUrl']
 	  	render 'talks/talk'
 	  else
-		  render 'talks/notalk'
+		render 'talks/notalk'
 	  end
   end
 

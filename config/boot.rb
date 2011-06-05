@@ -9,6 +9,7 @@ Bundler.setup(:default, PADRINO_ENV.to_sym)
 # Only require default and environment gems
 Bundler.require(:default, PADRINO_ENV.to_sym)
 puts "=> Located #{Padrino.bundle} Gemfile for #{Padrino.env}"
+APP_KEYS = YAML.load(File.open "config/keys.yml")
 
 ##
 # Add your before load hooks here

@@ -8,7 +8,7 @@
       =pat(:new)
       =mt(:talk)
     .inner
-      -form_for :talk, url(:talks, :create), :class => :form do |f|
+      -form_for :talk, url(:talks, :create), :class => :form, :multipart => true do |f|
         =partial "talks/form", :locals => { :f => f }
 
 -content_for :sidebar, partial("base/sidebar")

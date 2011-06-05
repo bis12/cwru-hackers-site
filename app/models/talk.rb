@@ -1,6 +1,7 @@
 class Talk < ActiveRecord::Base
 
-	mount_uploader :video, VideoUploader
+	#Don't use carrierwave for video uploads!
+	#mount_uploader :video, VideoUploader
 
 	belongs_to :account
 	has_many :sponsorships

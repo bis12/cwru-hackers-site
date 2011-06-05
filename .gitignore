@@ -8,3 +8,4 @@ vendor/gems/*
 *.swp
 uploads/
 *.db
+config/keys.yml

@@ -15,3 +15,14 @@ new site will feature:
  * any co-sponsors for talk
 * other stuff tbd
 
+#### Notes
+
+The keys needed to run this app should be kept in a file
+"config/keys.yaml".  There is file with example appended
+to it there already that you should just mv to the correct
+name and put your keys in the specified place. 
+
+#### Install
+
+Project needs ImageMagick for working with uploaded images.
+Make sure to install this before running bundle install.

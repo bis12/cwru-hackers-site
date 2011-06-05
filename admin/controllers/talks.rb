@@ -10,6 +10,7 @@ Admin.controllers :talks do
   get :new do
     @talk = Talk.new
     @sponsors = Sponsor.all
+    @sponsorship_map = {}
     render 'talks/new'
   end
 
@@ -60,7 +61,29 @@ Admin.controllers :talks do
 	    end
     end
     params[:talk].delete 'sponsors'
+    #now that the extra sponsors field is removed, this will work
     @talk = Talk.find(params[:id])
+    video = params[:talk][:video]
+
+	#FOR TOMORROW, make update uploads not make 2 files, and make new uploads work
+
+    if not video.nil?
+	    #TODO: ok, something must be fixable about this crazy situation we've got going on here...
+	    #Also, move all of this to a delayed job, so that the server is not locked up!
+	    vid_file = File.open(video[:tempfile])
+	    saved = File.open("uploads/#{video[:filename]}", 'wb')
+	    saved.write(vid_file.read)
+	    saved = File.open("uploads/#{video[:filename]}", 'rb')
+	    blip = BlipTV::Base.new 
+	    uploaded = blip.upload_video({
+		    :title => params[:talk][:title],
+		    :file =>  saved,
+		    :id => @talk.video,
+		    :username => APP_KEYS["bliptv"]["uname"],
+		    :password => APP_KEYS["bliptv"]["pass"]})
+	    params[:talk][:video] = uploaded.id
+	    puts uploaded.id
+    end
     if @talk.update_attributes(params[:talk])
       flash[:notice] = 'Talk was successfully updated.'
       redirect url(:talks, :edit, :id => @talk.id)

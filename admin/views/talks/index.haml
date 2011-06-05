@@ -27,8 +27,8 @@
             %td=talk.title
             %td=talk.speaker
             %td=talk.date
-            %td=talk.s_descrip
-            %td=talk.l_descrip
+            %td=truncate talk.s_descrip, :length => 10
+            %td=truncate talk.l_descrip, :length => 10
             %td=talk.thumb
             %td=talk.pics
             %td=talk.video_ext

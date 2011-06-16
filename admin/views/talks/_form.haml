@@ -4,7 +4,8 @@
   :javascript
     $(function() {
                 $( "#datepicker" ).datepicker({
-                        showButtonPanel: true
+                  showButtonPanel: true,
+                  dateFormat: 'yy-mm-dd'
                 });
                 var uploader = new qq.FileUploader({
                         element: document.getElementById('file-uploader'),
@@ -28,6 +29,7 @@
   =f.label :date
   =f.error_message_on :date
   =f.text_field :date, :class => :text_field, :id => 'datepicker'
+  %span.description Date format is Year-Month-Day
 
 .group
   =f.label 'Short Description'
@@ -44,23 +46,23 @@
 .group
   =f.label 'Thumbnail'
   =f.error_message_on 'thumbnail'
-  =f.text_field :thumb, :class => :text_field
-  %span.description Any image you upload will automatically be converted to necessary sizes. Please upload a hi-res one.
+  =f.file_field :thumb
+  %span.description <br>Any image you upload will automatically be converted to necessary sizes.
 
-.group
-  #file-uploader
-    %noscript
-      Please enable javascript in order to use this file uploader (this will be made into standard uploader later)
-  =f.label :pics
-  =f.error_message_on :pics
-  =f.text_field :pics, :class => :text_field
-  %span.description Upload any images you have of the talk. These will be in a gallery on the talk page.
+-#.group
+-#  #file-uploader
+-#    %noscript
+-#      Please enable javascript in order to use this file uploader (this will be made into standard uploader later)
+-#  =f.label :pics
+-#  =f.error_message_on :pics
+-#  =f.text_field :pics, :class => :text_field
+-#  %span.description Upload any images you have of the talk. These will be in a gallery on the talk page.
 
 .group
   =f.label :video
   =f.error_message_on :video
   =f.file_field :video
-  %span.description The video of the talk
+  %span.description <br>The video of the talk
 
 .group
   =f.label :slides

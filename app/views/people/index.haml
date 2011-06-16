@@ -1,7 +1,8 @@
 %span.title People
+%a#tb{:href => '/'} Go back to homepage
 %hr
 - @people.each do |person|
-  .person-box
+  .talk-box
     = link_to person.name, "people/#{person.id}"
     %br
     Also in here will be the persons tags, and maybe a thumbnail of their photo?

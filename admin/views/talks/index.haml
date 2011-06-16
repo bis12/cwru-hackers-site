@@ -14,25 +14,15 @@
           %th=mat(:talk, :title)
           %th=mat(:talk, :speaker)
           %th=mat(:talk, :date)
-          %th=mat(:talk, :s_descrip)
-          %th=mat(:talk, :l_descrip)
           %th=mat(:talk, :thumb)
-          %th=mat(:talk, :pics)
-          %th=mat(:talk, :video)
-          %th=mat(:talk, :slides)
           %th.last="&nbsp;"
         -@talks.each do |talk|
           %tr
             %td.first=talk.id
             %td=talk.title
             %td=talk.speaker
-            %td=talk.date
-            %td=truncate talk.s_descrip, :length => 10
-            %td=truncate talk.l_descrip, :length => 10
-            %td=talk.thumb
-            %td=talk.pics
-            %td=talk.video_ext
-            %td=talk.slides
+            %td=talk.date.strftime '%B %d, %Y'
+            %td=image_tag talk.thumb.url, :width => 30, :height => 30
             %td.last
               =button_to pat(:edit), url(:talks, :edit, :id => talk.id), :method => :get, :class => :button_to
               ="|"

@@ -3,8 +3,12 @@
   %span.title #{@talk.title}
   %span#t_date  #{@talk.date.strftime '%A %B %d, %Y'}
   %hr
-#big_vid
-  <iframe src="#{@embed}" width="720" height="480" frameborder="0" scrolling="no" allowfullscreen ebablejs="false"></iframe>
+- if @embed != ""
+  #big_vid
+    <iframe src="#{@embed}" width="720" height="480" frameborder="0" scrolling="no" allowfullscreen ebablejs="false"></iframe>
+- else
+  .warn= @warn
+
 
 #lower
   #left-col

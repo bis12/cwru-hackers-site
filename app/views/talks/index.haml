@@ -1,15 +1,23 @@
 %span.title Talks
+%a#tb{:href => '/'} Go back to homepage
 %hr
+- if not @warn.nil?
+  .warn
+    =@warn
 - @talks.each do |talk|
   .talk-box
     .right-t
-      = image_tag "#{talk.thumb}", {:height => 80}
+      =link_to image_tag("#{talk.thumb.url}", {:height => 80, :width => 133}), "/talks/#{talk.id}"
     .left-t
     %span.talk_name
       = link_to talk.title, "/talks/#{talk.id}"
     %br
     %span.date
       = talk.date.strftime '%A %B %d, %Y'
+    .tags
+      =link_to 'php'
+      =link_to 'web'
+      =link_to 'design patterns'
     %hr
     :textile
       #{talk.s_descrip}

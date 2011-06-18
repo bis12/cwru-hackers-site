@@ -140,41 +140,37 @@ a#tb {
 
 span.s_title {
   font-size: 2.0em;
-}
-
-span#t_date {
-  margin-left: 45px;
+} span#t_date { margin-left: 45px;
   font-weight: bold;
 }
 
 ul.hor{
   @include horizontal-list(0px);
+  background-color: #efefff;
+  border: 1px solid #ddd;
+  padding: 4px;
+  @include border-radius(5px);
+  a {
+    text-decoration: none;
+  }
   li {
-    margin: 0 18px 18px 18px;
+    margin: 0 18px 0px 18px;
+    border-left: 3px double #ddd;
     width: 20%;
+    padding: 4px;
+    -webkit-transition: opacity .25s linear;
+    -moz-transition: opacity .25s linear;
+    &:hover{
+        border-color: #ccd;
+      }
     .left {
       float: left;
-      border-left: 3px double #eee;
       padding-left: 5px;
-      &:hover{
-        border-color: #ddd;
-      }
+      
     }
     .right {
       float: right;
-      -webkit-transition: opacity .25s linear;
-      -moz-transition: opacity .25s linear;
-      @include opacity(0.55);
-      &:hover {
-          @include opacity(0.90);
-      }
-    }
-    a {
-      display: block;
-      text-decoration: none;
-      &:hover{
-        color: $c_blue + #667;
-      }
+      @include opacity(0.67);
     }
   }
 }
@@ -276,4 +272,32 @@ ul.hor{
   @include border-radius(4px);
   padding: 7px;
   margin: 3px;
+}
+
+
+.fp {
+  border: 1px solid #ccd;
+  padding: 5px;
+  @include border-radius(4px);
+}
+
+#small {
+  margin-top: 20px;
+  width: 450px;
+  float: left;
+  padding-left: 30px;
+  padding-right: 50px;
+  border-right: 1px solid #eee;
+}
+
+#announce {
+  margin-top: 20px;
+  float: right;
+  width: 360px;
+  padding-right: 30px;
+}
+
+.subtle {
+  color: #dedede;
+  font-weight: lighter;
 }

@@ -25,7 +25,7 @@
     %ul.space
       - @talk.sponsors.each do |sponsor|
         %li
-          %a{:href => sponsor.website, :rel => 'tipsy', :title => "#{sponsor.name}: #{sponsor.description}"}
+          %a{:href => sponsor.website, :rel => 'tipsy', :target => '_blank',:title => "#{sponsor.name}: #{sponsor.description}"}
             =image_tag sponsor.logo.url, {:width => 40, :height => 40}
     %hr
     %span.s_title Speaker

@@ -16,14 +16,6 @@ Admin.controllers :talks do
 
   post :create do
     sponsors = params[:talk][:sponsors]
-    sponsors.each do |sponsor|
-	    if sponsor[1].eql? "1" 
-		spons = Sponsorship.new
-		spons.talk_id = params[:id]
-		spons.sponsor_id = sponsor[0]
-		spons.save
-	    end
-    end
     params[:talk].delete 'sponsors'
     puts params[:talk]
     video = params[:talk][:video]
@@ -32,6 +24,14 @@ Admin.controllers :talks do
     end
     @talk = Talk.new(params[:talk])
     if @talk.save
+	    sponsors.each do |sponsor|
+		    if sponsor[1].eql? "1" 
+			spons = Sponsorship.new
+			spons.talk_id = @talk.id
+			spons.sponsor_id = sponsor[0]
+			spons.save
+		    end
+	    end
       flash[:notice] = 'Talk was successfully created.'
       redirect url(:talks, :edit, :id => @talk.id)
     else
@@ -90,7 +90,19 @@ Admin.controllers :talks do
   end
 
   delete :destroy, :with => :id do
+    #TODO: Also destroy thumbnails and sponsorships when destroying talk
     talk = Talk.find(params[:id])
+    #video = BlipTV::Video.new talk.video
+    #video.delete!({
+    #		    :username => APP_KEYS["bliptv"]["uname"],
+    #		    :password => APP_KEYS["bliptv"]["pass"]})
+    #The workaround below exists because the gem currently has the wrong url
+    url, path = "blip.tv", "/?userlogin=#{APP_KEYS['bliptv']['uname']}&amp;password=#{APP_KEYS['bliptv']['pass']}&amp;cmd=delete&amp;s=file&amp;id=#{talk.video}&amp;reason=because&amp;skin=api"
+    request = Net::HTTP.get(url, path) 
+    hash = Hash.from_xml(request)
+    if hash['response']['status'] != 'OK'
+	    flash[:warning] = 'Video could not be deleted, you can manually do this <a href="http://blip.tv">here</a>'
+    end
     if talk.destroy
       flash[:notice] = 'Talk was successfully destroyed.'
     else
@@ -115,5 +127,5 @@ end
 		    :username => APP_KEYS["bliptv"]["uname"],
 		    :password => APP_KEYS["bliptv"]["pass"]})
 	    return uploaded.id
-	end
+  end
 

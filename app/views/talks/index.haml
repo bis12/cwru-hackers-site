@@ -15,9 +15,8 @@
     %span.date
       = talk.date.strftime '%A %B %d, %Y'
     .tags
-      =link_to 'php'
-      =link_to 'web'
-      =link_to 'design patterns'
+      - talk.tags.each do |tag|
+        = link_to tag.name, '/'
     %hr
     :textile
       #{talk.s_descrip}

@@ -12,8 +12,10 @@
       Resume: "Download PDF":http://
       
     .tags
-      :textile
-        Tags: "one":http:// "two":http:// "three":http:// "4":http:// "five":http://
+      - @person.tags.each do |tag|
+        = link_to tag.name, '/'
+    %br
+    %hr
     .descrip
       :textile
         Eventually, these fields will be populated by reading in a yaml file with any

@@ -17,9 +17,11 @@
     :textile
       #{@talk.l_descrip}
   #right-col
-    %span.s_title Meta
-    :textile
-      Other information about the talk, including the speaker, the slides, and our sponsors are below in this column.
+    %span.s_title Tags
+    .tags
+      - @talk.tags.each do |tag|
+        = link_to tag.name, '/'
+    %br
     %hr
     %h3 Sponsors
     %ul.space

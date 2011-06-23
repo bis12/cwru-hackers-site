@@ -5,9 +5,10 @@ class Talk < ActiveRecord::Base
 	
 	mount_uploader :thumb, ThumbnailUploader
 
-	belongs_to :account
 	has_many :sponsorships
 	has_many :sponsors, :through => :sponsorships
+	has_many :taggings
+	has_many :tags, :through => :taggings
 
 
 end

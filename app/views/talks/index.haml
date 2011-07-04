@@ -4,6 +4,10 @@
 - if not @warn.nil?
   .warn
     =@warn
+.search-box
+  %h2 search 
+  %label{:for => 'keywords'}Keyword Search
+  %input#keywords{:type => 'text'}
 - @talks.each do |talk|
   .talk-box
     .right-t

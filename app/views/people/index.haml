@@ -1,6 +1,10 @@
 %span.title People
 %a#tb{:href => '/'} Go back to homepage
 %hr
+.search-box
+  %h2 search 
+  %label{:for => 'keywords'}Keyword Search
+  %input#keywords{:type => 'text'}
 - @people.each do |person|
   .talk-box
     = link_to person.name, "people/#{person.id}"

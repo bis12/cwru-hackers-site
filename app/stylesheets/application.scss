@@ -219,6 +219,13 @@ ul.hor{
   overflow: clip;
 }
 
+.big_img {
+  @include hilite(3px);
+  width: 355px;
+  margin-bottom: 14px;
+  @include center;
+}
+
 #lower {
   padding-top: 30px;
 }
@@ -298,9 +305,11 @@ a.t_link{
 
 
 .fp {
-  border: 1px solid #ccd;
+  border: 1px solid #ddf;
+  background: #f9ffff;
   padding: 5px;
   @include border-radius(4px);
+  font-size: 1.1em;
 }
 
 #small {

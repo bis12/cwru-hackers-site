@@ -1,37 +1,25 @@
 #big_top
   %ul.hor
-    %a{:href => '/talks'} 
-      %li
-        .right
-          = image_tag 'talker.png', {:width => 40}
-        .left
-          %h2 Talks
-          %p 
-            Updated weekly
-    %a{:href => '/people'} 
-      %li
-        .right
-          = image_tag 'people.png', {:width => 60}
-        .left
-          %h2 People
-          %p 
-            Check us out
-    %a{:href => 'http://posterous.com/'} 
-      %li
-        .right
-          = image_tag 'blog.png', {:width => 40}
-        .left
-          %h2 Blog
-          %p
-            Will we have a blog?
-    %a{:href => 'mailto:sj@case.edu'} 
-      %li
-        .right
-          = image_tag 'mail.png', {:width => 40}
-        .left
-          %h2 Contact
-          %p
-            Send us a message
+    %li
+      %a{:href => '/talks'}
+        =image_tag 'talker.png', :width => 30
+        %h2 Talks
+        =link_to 'View Talks', '/talks', {:class => 't_link'}
+    %li
+      %a{:href => '/people'}
+        =image_tag 'people.png', :width => 60
+        %h2 People
+        =link_to 'View Members', '/people', {:class => 't_link'}
+    %li
+      %a{:href => 'http://posterous.com/'}
+        =image_tag 'blog.png', :width => 40
+        %h2 Blog
+        =link_to 'View Blog', 'http://posterous.com/', {:class => 't_link'}
+    %li
+      %a{:href => 'mailto:sj@case.edu'}
+        =image_tag 'mail.png', :width => 40
+        %h2 Contact
+        =link_to 'Contact Us', 'mailto:sj@case.edu', {:class => 't_link'}
 #announce.right
   %h2 Information
   %p.fp

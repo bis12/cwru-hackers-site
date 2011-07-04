@@ -58,12 +58,33 @@ margin-right: auto;
 @import "compass/css3/box-shadow";
 @import "compass/css3/opacity";
 @import "compass/typography/lists/horizontal-list";
+$solid-color: #fefefe;
 
 @mixin hilite ($width: 7px){
   border: $width solid $c_blue;
   @include border-radius(4px);
   @include box-shadow;
   @include center;
+}
+
+@mixin solid($bg-color: #999){
+    background-color:$bg-color;
+    background-image:-webkit-linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,.1));
+    background-image:-moz-linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,.1));
+    background-image:linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,.1));
+    color: $bg-color - #555;
+    -webkit-box-shadow:
+        0 1px 3px rgba(0,0,0,.3),
+        0 0 0 1px $bg-color - #222,
+        0 1px 0 $bg-color + #222 inset;
+    -moz-box-shadow:
+        0 1px 3px rgba(0,0,0,.3),
+        0 0 0 1px $bg-color - #222,
+        0 1px 0 $bg-color + #222 inset;
+    box-shadow:
+        0 1px 3px rgba(0,0,0,.3),
+        0 0 0 1px $bg-color - #222,
+        0 1px 0 $bg-color + #222 inset;
 }
 
 #home {
@@ -96,8 +117,10 @@ ul#topbar {
   list-style: none;
   position: relative;
   bottom: -25px;
+  @include solid($solid-color);
   font-size: 1.2em;
   font-weight: bold;
+  padding-right: 7px;
   li {
     display: inline-block;
     margin-left: 3px;
@@ -144,34 +167,27 @@ span.s_title {
   font-weight: bold;
 }
 
+
 ul.hor{
   @include horizontal-list(0px);
-  background-color: #efefff;
-  border: 1px solid #ddd;
-  padding: 4px;
+  @include solid($solid-color);
   @include border-radius(5px);
-  a {
+  border: 1px solid #CCC;
+  text-shadow:0 1px #ccccec;
+  img {
+    float: right;
+    @include opacity(0.7);
+  }
+  a{
     text-decoration: none;
+  }
+  h2 {
+    color: #333;
   }
   li {
     margin: 0 18px 0px 18px;
-    border-left: 3px double #ddd;
     width: 20%;
     padding: 4px;
-    -webkit-transition: opacity .25s linear;
-    -moz-transition: opacity .25s linear;
-    &:hover{
-        border-color: #ccd;
-      }
-    .left {
-      float: left;
-      padding-left: 5px;
-      
-    }
-    .right {
-      float: right;
-      @include opacity(0.67);
-    }
   }
 }
 
@@ -233,16 +249,6 @@ ul.hor{
   padding: 5px;
   border: 1px solid #ccc;
   @include border-radius(4px);
-  a.t_link{
-    font-size: 0.95em;
-    text-decoration:none;
-    display: block;
-    padding: 3px;
-    background-color: #fff;
-    border: 1px solid #aaa;
-    @include border-radius(3px);
-    width: 65px;
-  }
   .left-t {
     float: left;
   }
@@ -252,6 +258,22 @@ ul.hor{
     @include hilite(3px);
   }
 }
+
+a.t_link{
+    font-size: 0.95em;
+    text-decoration:none;
+    padding: 3px;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    @include border-radius(3px);
+    width: 65px;
+      &:hover{
+        background-color: #fafafe;
+        @include opacity(0.9);
+        border-color: #447 ;
+      }
+
+  }
 
 .space{
   @include horizontal-list(0px);
@@ -298,6 +320,16 @@ ul.hor{
 }
 
 .subtle {
-  color: #dedede;
-  font-weight: lighter;
+  font-weight: normal;
 }
+
+.search-box {
+  margin: 5px;
+  margin-bottom: 20px;
+  padding: 5px;
+  border: 2px solid #ccc;
+  @include border-radius(4px);
+    height: 130px;
+}
+
+

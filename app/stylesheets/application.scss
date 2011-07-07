@@ -163,10 +163,15 @@ a#tb {
 
 span.s_title {
   font-size: 2.0em;
-} span#t_date { margin-left: 45px;
+} 
+  
+span#t_date { margin-left: 45px;
   font-weight: bold;
 }
 
+ul.social{
+  @include horizontal-list();
+}
 
 ul.hor{
   @include horizontal-list(0px);
@@ -174,20 +179,31 @@ ul.hor{
   @include border-radius(5px);
   border: 1px solid #CCC;
   text-shadow:0 1px #ccccec;
+  $bar-width: 880px;
+  width: $bar-width;
+  @include center;
   img {
     float: right;
     @include opacity(0.7);
   }
   a{
     text-decoration: none;
+    &:hover{
+      color: $link-color;
+    }
   }
   h2 {
     color: #333;
   }
   li {
     margin: 0 18px 0px 18px;
-    width: 20%;
+    width: $bar-width/4 - 43;
     padding: 4px;
+    cursor: hand;
+    cursor: pointer;
+    &:hover{
+      @include solid($solid-color - #111);
+    }
   }
 }
 

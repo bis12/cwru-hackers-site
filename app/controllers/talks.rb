@@ -19,6 +19,11 @@ CwruHackersSite.controllers :talks do
 			@warn = "No video with the specified id \" #{@talk.video} \" could be found at blip.tv, although the talk exists."
 			puts "An error occurred: #{$!}"
 		end
+		if @talk.slides.url
+			@slide_link = link_to 'Download PDF of slides', @talk.slides.url
+		else
+			@slide_link = 'No Slides Available...'
+		end
 	  	render 'talks/talk'
 	  else
 		render 'talks/notalk'

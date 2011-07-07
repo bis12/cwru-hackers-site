@@ -67,8 +67,8 @@
 .group
   =f.label :slides
   =f.error_message_on :slides
-  =f.text_field :slides, :class => :text_field
-  %span.description also make this a simple upload
+  =f.file_field :slides
+  %span.description A pdf of the slides? 
 
 .group
   =f.label "Sponsors"

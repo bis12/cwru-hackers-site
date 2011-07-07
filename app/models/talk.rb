@@ -4,6 +4,7 @@ class Talk < ActiveRecord::Base
 	#mount_uploader :video, VideoUploader
 	
 	mount_uploader :thumb, ThumbnailUploader
+	mount_uploader :slides, SlidesUploader
 
 	has_many :sponsorships
 	has_many :sponsors, :through => :sponsorships

@@ -10,14 +10,17 @@ Admin.controllers :talks do
   get :new do
     @talk = Talk.new
     @sponsors = Sponsor.all
+    @people = Person.all
     @sponsorship_map = {}
+    @speaker_map = {}
     render 'talks/new'
   end
 
   post :create do
     sponsors = params[:talk][:sponsors]
     params[:talk].delete 'sponsors'
-    puts params[:talk]
+    speakers = params[:talk][:speakers]
+    params[:talk].delete 'speakers'
     video = params[:talk][:video]
     if not video.nil?
     	params[:talk][:video] = attach_video(video, params)
@@ -30,6 +33,14 @@ Admin.controllers :talks do
 			spons.talk_id = @talk.id
 			spons.sponsor_id = sponsor[0]
 			spons.save
+		    end
+	    end
+	    speakers.each do |speaker|
+		    if speaker[1].eql? "1" 
+			speak = Speaker.new
+			speak.talk_id = @talk.id
+			speak.person_id = speaker[0]
+			speak.save
 		    end
 	    end
       flash[:notice] = 'Talk was successfully created.'
@@ -46,6 +57,12 @@ Admin.controllers :talks do
     @sponsorship_map = {}
     sponsorships.each do |spons|
 	    @sponsorship_map[spons.sponsor_id] = true
+    end
+    @people = Person.all
+    speakers = Speaker.where "talk_id=#{params[:id]}"
+    @speaker_map = {}
+    speakers.each do |speak|
+	    @speaker_map[speak.person_id] = true
     end
     render 'talks/edit'
   end
@@ -66,7 +83,23 @@ Admin.controllers :talks do
 	    end
     end
     params[:talk].delete 'sponsors'
-    #now that the extra sponsors field is removed, this will work
+    speakers = params[:talk][:speakers]
+    speakers.each do |speaker|
+	    #TODO: Fix injection possibilities, and make more activerecordy
+	    if speaker[1].eql? "1" and not Speaker.where("talk_id=#{params[:id]} and person_id=#{speaker[0]}").exists?
+ 
+		speak = Speaker.new
+		speak.talk_id = params[:id]
+		speak.person_id = speaker[0]
+		speak.save
+	    elsif speaker[1].eql? "0"
+		 speak = Speaker.where "talk_id=#{params[:id]} and person_id=#{speaker[0]}"
+		 Speaker.delete speak
+	    end
+    end
+    params[:talk].delete 'speakers'
+
+    #now that the extra sponsors and speakers fields are removed, this will work
     @talk = Talk.find(params[:id])
     video = params[:talk][:video]
     if not video.nil?
@@ -90,7 +123,7 @@ Admin.controllers :talks do
   end
 
   delete :destroy, :with => :id do
-    #TODO: Also destroy thumbnails and sponsorships when destroying talk
+    #TODO: Also destroy thumbnails, sponsorships, and speakers when destroying talk
     talk = Talk.find(params[:id])
     #video = BlipTV::Video.new talk.video
     #video.delete!({

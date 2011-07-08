@@ -39,6 +39,13 @@
 
 .group
   =f.label 'Thumbnail'
+  %br
+  -if @talk.thumb?
+    =image_tag @talk.thumb.url, {:width => 150, :height => 150, :style => 'border: 2px solid #777; margin: 10px; margin-left: 100px;'}
+    %br
+    = f.check_box :remove_thumb
+    %span Remove Thumbnail
+    %br
   =f.error_message_on 'thumbnail'
   =f.file_field :thumb
   %span.description <br>Any image you upload will automatically be converted to necessary sizes.
@@ -63,6 +70,15 @@
   =f.error_message_on :slides
   =f.file_field :slides
   %span.description A pdf of the slides? 
+
+.group
+  =f.label "Speakers"
+  -@people.each do |speaker|
+    .box
+      = f.check_box :"speakers[#{speaker.id}]", :checked => @speaker_map.has_key?(speaker.id)
+      %span= speaker.name
+      %br
+      =image_tag speaker.pic.url, {:width => 30, :height => 30}
 
 .group
   =f.label "Sponsors"

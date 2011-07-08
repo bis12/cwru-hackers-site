@@ -10,6 +10,7 @@ class Talk < ActiveRecord::Base
 	has_many :sponsors, :through => :sponsorships
 	has_many :taggings
 	has_many :tags, :through => :taggings
-
+	has_many :speakers
+	has_many :people, :through => :speakers
 
 end

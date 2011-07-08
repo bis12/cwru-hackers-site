@@ -9,7 +9,7 @@
       =pat(:edit)
       =mt(:person)
     .inner
-      -form_for :person, url(:people, :update, :id => @person.id), :method => :put, :class => :form do |f|
+      -form_for :person, url(:people, :update, :id => @person.id), :method => :put, :class => :form, :multipart => true do |f|
         =partial "people/form", :locals => { :f => f }
 
 -content_for :sidebar, partial("base/sidebar")

@@ -20,7 +20,7 @@
       = talk.date.strftime '%A %B %d, %Y'
     .tags
       - talk.tags.each do |tag|
-        = link_to tag.name, '/'
+        = link_to tag.name, '#'
     %hr
     :textile
       #{talk.s_descrip}

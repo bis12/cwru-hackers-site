@@ -1,0 +1,7 @@
+- @person = locals[:person]
+.personbadge
+  = image_tag @person.pic.thumb
+  %span.name= @person.name
+
+  %br
+  = link_to "View profile", "/people/#{@person.id}", :class => 't_link'

@@ -43,11 +43,10 @@
           %a{:href => sponsor.website, :rel => 'tipsy', :target => '_blank',:title => "#{sponsor.name}: #{sponsor.description}"}
             =image_tag sponsor.logo.url, {:width => 40, :height => 40}
     %hr
-    %span.s_title Speaker
-    :textile
-      name...
-      
-      The speakers will become a Person model, and a bit will be flipped if they are a student or not.
+    %span.s_title Speakers
+    %ul.speakers
+      - @talk.people.each do |speaker|
+        %li= partial 'people/personbadge', :locals => {:person => speaker}
     %hr
     %span.s_title Pictures
     %hr

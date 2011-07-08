@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 15) do
+ActiveRecord::Schema.define(:version => 17) do
 
   create_table "accounts", :force => true do |t|
     t.string "name"
@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(:version => 15) do
     t.string "name"
     t.string "pic"
     t.string "yaml"
+  end
+
+  create_table "speakers", :force => true do |t|
+    t.integer "talk_id"
+    t.integer "person_id"
   end
 
   create_table "sponsors", :force => true do |t|
@@ -50,7 +55,6 @@ ActiveRecord::Schema.define(:version => 15) do
 
   create_table "talks", :force => true do |t|
     t.string "title"
-    t.string "speaker"
     t.date   "date"
     t.string "s_descrip"
     t.string "l_descrip"

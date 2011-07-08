@@ -12,7 +12,6 @@
         %tr
           %th.first=mat(:talk, :id)
           %th=mat(:talk, :title)
-          %th=mat(:talk, :speaker)
           %th=mat(:talk, :date)
           %th=mat(:talk, :thumb)
           %th.last="&nbsp;"
@@ -20,7 +19,6 @@
           %tr
             %td.first=talk.id
             %td=talk.title
-            %td=talk.speaker
             %td=talk.date.strftime '%B %d, %Y'
             %td=image_tag talk.thumb.url, :width => 30, :height => 30
             %td.last

@@ -5,11 +5,18 @@
   %span.description Ex: a simple text
 
 .group
-  =f.label :pic
+  =f.label "Picture"
+  %br
+  -if @person.pic?
+    =image_tag @person.pic.url, {:width => 150, :height => 150, :style => 'border: 2px solid #777; margin: 10px; margin-left: 100px;'}
+    %br
+    = f.check_box :remove_pic
+    %span Remove Picture
+    %br
+
   =f.error_message_on :pic
   =f.file_field :pic
   %br
-  %span.description Ex: a simple text
 
 .group
   =f.label :yaml

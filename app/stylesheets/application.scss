@@ -196,9 +196,9 @@ ul.hor{
     color: #333;
   }
   li {
-    margin: 0 18px 0px 18px;
+    margin: 0 13px 0px 13px;
     width: $bar-width/4 - 43;
-    padding: 4px;
+    padding: 10px;
     cursor: hand;
     cursor: pointer;
     &:hover{
@@ -214,6 +214,11 @@ ul.hor{
   .right {
     float: right;
     padding-right: 160px;
+  }
+  .person_pic{
+    width: 200;
+    height: 200;
+    border: 3px double #ccc;
   }
 }
 
@@ -366,8 +371,9 @@ a.t_link{
   margin: 0 5px 5px 0;
   width: 180px;
   height: 70px;
-  background-color: #efefff;
-  border: 1px solid #ccc;
+  background-color: #f5ffff;
+  border: 1px outset #99e;
+  @include border-radius(4px);
   .name {
     font-size: 1.3em;
     font-weight: bold;

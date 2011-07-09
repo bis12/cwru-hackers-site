@@ -7,7 +7,13 @@
   %input#keywords{:type => 'text'}
 - @people.each do |person|
   .talk-box
-    = link_to person.name, "people/#{person.id}"
-    %br
+    .right-t
+      =image_tag person.pic.thumb
+    .left-t
+      = link_to person.name, "people/#{person.id}"
+    %hr
     Also in here will be the persons tags, and maybe a thumbnail of their photo?
     Up top will be a search/filter box and maybe some other selectors
+    %br
+    %br
+    = link_to "View Profile", "people/#{person.id}", {:class => 't_link'}

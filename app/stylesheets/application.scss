@@ -224,6 +224,13 @@ ul.hor{
 
 .tags {
   margin-top: 3px;
+  ul {
+    @include horizontal-list(0px);
+  }
+  li {
+    padding: 1px;
+    margin: 1px;
+  }
   a {
     padding: 1px;
     @include border-radius(3px);

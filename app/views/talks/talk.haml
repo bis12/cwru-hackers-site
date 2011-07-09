@@ -31,9 +31,7 @@
 
   #right-col
     %span.s_title Tags
-    .tags
-      - @talk.tags.each do |tag|
-        = link_to tag.name, '/'
+    = partial 'tag/list', :locals => {:tags => @talk.tags}
     %br
     %hr
     %h3 Sponsors

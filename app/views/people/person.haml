@@ -11,9 +11,7 @@
       Website: "brianstack.net":http://brianstack.net/
       Resume: "Download PDF":http://
       
-    .tags
-      - @person.tags.each do |tag|
-        = link_to tag.name, '/'
+    = partial 'tag/list', :locals => {:tags => @person.tags}
     %br
     %hr
     .descrip

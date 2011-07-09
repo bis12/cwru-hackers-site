@@ -1,0 +1,6 @@
+.tags
+  %ul
+    - locals[:tags].each do |tag|
+      %li
+        = link_to tag.name, '#'
+    

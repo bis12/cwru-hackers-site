@@ -1,0 +1,15 @@
+#top_info
+  %a#tb{:href => '/'} Go back home
+  %span.title Tag: #{@tag.name}
+  %hr
+
+#lower
+  #left-col
+    %span.s_title Talks
+    - @talks.each do |talk|
+      = partial 'talks/minitalk', :locals => {:talk => talk}
+  #right-col
+    %span.s_title People
+    - @people.each do |person|
+      = partial 'people/personbadge', :locals => {:person => person}
+

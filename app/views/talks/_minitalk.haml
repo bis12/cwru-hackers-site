@@ -1,0 +1,6 @@
+.minitalk
+  = link_to locals[:talk].title, "/talks/#{locals[:talk].id}"
+  %br
+  = image_tag locals[:talk].thumb.url, {:width => 70, :height => 50}
+  %br
+  %span= "IMPROVE THIS LATER"

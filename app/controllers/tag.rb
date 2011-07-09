@@ -10,13 +10,11 @@ CwruHackersSite.controllers :tag do
   #     else ...
   # end
 
-  # get :foo, :with => :id do
-  #   "Maps to url '/foo/#{params[:id]}'"
-  # end
-
-  # get "/example" do
-  #   "Hello world!"
-  # end
-
+  get :tag, :map => '/tag/:id'  do
+	  @tag = Tag.find params[:id]
+	  @talks = @tag.talks
+	  @people = @tag.people
+	  render 'tag/tag'
+  end
   
 end

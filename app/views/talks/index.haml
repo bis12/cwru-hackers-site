@@ -18,9 +18,7 @@
     %br
     %span.date
       = talk.date.strftime '%A %B %d, %Y'
-    .tags
-      - talk.tags.each do |tag|
-        = link_to tag.name, '#'
+    = partial 'tag/list', :locals => {:tags => talk.tags}
     %hr
     :textile
       #{talk.s_descrip}

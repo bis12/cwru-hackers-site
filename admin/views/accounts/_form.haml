@@ -34,18 +34,6 @@
   =f.select :role, :options => access_control.roles
   %span.description Ex: a simple text
 
-.group
-  =f.label 'Blip.tv Username'
-  =f.error_message_on 'Blip.tv Name'
-  =f.text_field :vid_uname, :class => :text_field
-  %span.description Your username on Blip.tv. Used for uploading and embedding videos.
-
-.group
-  =f.label 'Blip.tv Password'
-  =f.error_message_on 'Blip.tv password'
-  =f.password_field :vid_pass, :class => :password_field
-  %span.description Your Blip.tv password.
-
 .group.navform.wat-cf
   =f.submit pat(:save), :class => :button
   =f.submit pat(:cancel), :onclick => "window.location='#{url(:accounts, :index)}';return false", :class => :button

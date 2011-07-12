@@ -1,0 +1,89 @@
+
+$c_blue: #447;
+$solid-color: #fefefe;
+$light-gray: #ccc;
+
+@import "partials/mixins";
+@import "compass/css3/border-radius";
+@import "compass/css3/opacity";
+@import "compass/typography/lists/horizontal-list";
+
+#nav {
+  float: right;
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #ccc;
+    border-left: 3px solid #ddd;
+    padding: 3px;
+    margin: 3px;
+    font-size: 0.8em;
+    &:hover {
+      border-color: #bbbbbb;
+    }
+  }
+}
+
+ul#topbar {
+  float: right;
+  list-style: none;
+  position: relative;
+  bottom: -25px;
+  @include solid($solid-color);
+  font-size: 1.2em;
+  font-weight: bold;
+  padding-right: 7px;
+  li {
+    display: inline-block;
+    margin-left: 3px;
+    a {
+      background-color: #EEE;
+      border: 1px solid #CCC;
+      @include border-radius(2px);
+      position: relative;
+      top: 1px;
+      padding: 5px;
+      color: #CCC;
+      text-decoration: none;
+      &:hover{
+        background-color: $c_blue + #022;
+        @include opacity(0.9);
+        border-color: #333 ;
+      }
+    }
+  }
+}
+
+ul.hor{
+  @include horizontal-list(0px);
+  @include solid($solid-color);
+  @include border-radius(5px);
+  border: 1px solid #CCC;
+  text-shadow:0 1px #ccccec;
+  $bar-width: 880px;
+  width: $bar-width;
+  @include center;
+  img {
+    float: right;
+    @include opacity(0.7);
+  }
+  a{
+    text-decoration: none;
+    &:hover{
+      color: $link-color;
+    }
+  }
+  h2 {
+    color: #333;
+  }
+  li {
+    margin: 0 13px 0px 13px;
+    width: $bar-width/4 - 43;
+    padding: 10px;
+    cursor: hand;
+    cursor: pointer;
+    &:hover{
+      @include solid($solid-color - #111);
+    }
+  }
+}

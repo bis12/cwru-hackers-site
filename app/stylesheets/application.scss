@@ -10,24 +10,32 @@
 // Import the non-default scaffolding module.
 @import "blueprint/scaffolding";
 
-// To generate css equivalent to the blueprint css but with your
-// configuration applied, uncomment:
-// @include blueprint
+//Text formatting should go in here
+@import "partials/text";
+
+//Menu styles should go here
+@import "partials/menus";
+
+//Put mixins that may be needed across all partials in here
+@import "partials/mixins";
 
 // But Compass recommends that you scope your blueprint styles
 // So that you can better control what pages use blueprint
 // when stylesheets are concatenated together.
 @include blueprint-scaffolding("body.bp");
 
-$c_blue: #447;
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "compass/css3/opacity";
+@import "compass/typography/lists/horizontal-list";
 
 body {
   @include blueprint-typography(true);
   @include blueprint-utilities;
   @include blueprint-debug;
   @include blueprint-interaction;
-    border-top: 3px solid $c_blue;
-    background-color: #f9f9fc;
+  border-top: 3px solid $c_blue;
+  background-color: #f9f9fc;
 }
 
 form {
@@ -47,44 +55,7 @@ form {
     font-size: 1.5em;
     @include column(24);}
   #content {
-    @include column(24); } }
-
-@mixin center {
-margin-left: auto;
-margin-right: auto;
-}
-
-@import "compass/css3/border-radius";
-@import "compass/css3/box-shadow";
-@import "compass/css3/opacity";
-@import "compass/typography/lists/horizontal-list";
-$solid-color: #fefefe;
-
-@mixin hilite ($width: 7px){
-  border: $width solid $c_blue;
-  @include border-radius(4px);
-  @include box-shadow;
-  @include center;
-}
-
-@mixin solid($bg-color: #999){
-    background-color:$bg-color;
-    background-image:-webkit-linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,.1));
-    background-image:-moz-linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,.1));
-    background-image:linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,.1));
-    color: $bg-color - #555;
-    -webkit-box-shadow:
-        0 1px 3px rgba(0,0,0,.3),
-        0 0 0 1px $bg-color - #222,
-        0 1px 0 $bg-color + #222 inset;
-    -moz-box-shadow:
-        0 1px 3px rgba(0,0,0,.3),
-        0 0 0 1px $bg-color - #222,
-        0 1px 0 $bg-color + #222 inset;
-    box-shadow:
-        0 1px 3px rgba(0,0,0,.3),
-        0 0 0 1px $bg-color - #222,
-        0 1px 0 $bg-color + #222 inset;
+    @include column(24); } 
 }
 
 #home {
@@ -96,115 +67,8 @@ $solid-color: #fefefe;
   }
 }
 
-#nav {
-  float: right;
-  a {
-    text-decoration: none;
-    font-weight: bold;
-    color: #ccc;
-    border-left: 3px solid #ddd;
-    padding: 3px;
-    margin: 3px;
-    font-size: 0.8em;
-    &:hover {
-      border-color: #bbbbbb;
-    }
-  }
-}
-
-ul#topbar {
-  float: right;
-  list-style: none;
-  position: relative;
-  bottom: -25px;
-  @include solid($solid-color);
-  font-size: 1.2em;
-  font-weight: bold;
-  padding-right: 7px;
-  li {
-    display: inline-block;
-    margin-left: 3px;
-    a {
-      background-color: #EEE;
-      border: 1px solid #CCC;
-      @include border-radius(2px);
-      padding: 5px;
-      color: #CCC;
-      text-decoration: none;
-      &:hover{
-        background-color: $c_blue + #022;
-        @include opacity(0.9);
-        border-color: #333 ;
-      }
-    }
-  }
-}
-
-span.title {
-  font-size: 2.5em;
-}
-
-span.talk_name {
-  font-size: 1.8em;
-  a {
-    text-decoration: none;
-  }
-}
-
-span.date {
-  font-weight: bold;
-}
-
-a#tb {
-  float: right;
-  position: relative;
-  bottom: -21px;
-}
-
-span.s_title {
-  font-size: 2.0em;
-} 
-  
-span#t_date { margin-left: 45px;
-  font-weight: bold;
-}
-
 ul.social{
   @include horizontal-list();
-}
-
-ul.hor{
-  @include horizontal-list(0px);
-  @include solid($solid-color);
-  @include border-radius(5px);
-  border: 1px solid #CCC;
-  text-shadow:0 1px #ccccec;
-  $bar-width: 880px;
-  width: $bar-width;
-  @include center;
-  img {
-    float: right;
-    @include opacity(0.7);
-  }
-  a{
-    text-decoration: none;
-    &:hover{
-      color: $link-color;
-    }
-  }
-  h2 {
-    color: #333;
-  }
-  li {
-    margin: 0 13px 0px 13px;
-    width: $bar-width/4 - 43;
-    padding: 10px;
-    cursor: hand;
-    cursor: pointer;
-    &:hover{
-      @include solid($solid-color - #111);
-    }
-  }
 }
 
 #people-page {
@@ -218,7 +82,7 @@ ul.hor{
   .person_pic{
     width: 200;
     height: 200;
-    border: 3px double #ccc;
+    border: 3px double $light-gray;
   }
 }
 
@@ -234,7 +98,7 @@ ul.hor{
   a {
     padding: 1px;
     @include border-radius(3px);
-    border: 1px solid #ccc;
+    border: 1px solid $light-gray;
     background: #eef;
     text-decoration: none;
   }
@@ -258,13 +122,6 @@ ul.hor{
   padding-top: 30px;
 }
 
-@mixin bottom-col {
-  border-top: #eee solid 2px;
-  border-left: #eee solid 2px;
-  padding: 5px 0 0 10px;
-  @include border-radius;
-}
-
 #left-col {
   float: left;
   width: 400px;
@@ -282,7 +139,7 @@ ul.hor{
   margin: 5px;
   margin-bottom: 8px;
   padding: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid $light-gray;
   @include border-radius(4px);
   .left-t {
     float: left;
@@ -302,13 +159,12 @@ a.t_link{
     border: 1px solid #aaa;
     @include border-radius(3px);
     width: 65px;
-      &:hover{
-        background-color: #fafafe;
-        @include opacity(0.9);
-        border-color: #447 ;
-      }
-
-  }
+    &:hover{
+      background-color: #fafafe;
+      @include opacity(0.9);
+      border-color: #447 ;
+    }
+}
 
 .space{
   @include horizontal-list(0px);
@@ -317,7 +173,7 @@ a.t_link{
     width: 40px;
     height: 40px;
     margin: 3px;
-    border: 3px double #ccc;
+    border: 3px double $light-gray;
   }
 }
 
@@ -330,7 +186,6 @@ a.t_link{
   padding: 7px;
   margin: 3px;
 }
-
 
 .fp {
   border: 1px solid #ddf;
@@ -356,15 +211,11 @@ a.t_link{
   padding-right: 30px;
 }
 
-.subtle {
-  font-weight: normal;
-}
-
 .search-box {
   margin: 5px;
   margin-bottom: 20px;
   padding: 5px;
-  border: 2px solid #ccc;
+  border: 2px solid $light-gray;
   @include border-radius(4px);
     height: 130px;
 }
@@ -390,6 +241,6 @@ a.t_link{
     float: right;
     width: 40px;
     height: 40px;
-    border: 3px double #ccc;
+    border: 3px double $light-gray;
   }
 }

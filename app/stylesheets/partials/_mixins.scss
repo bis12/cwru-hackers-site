@@ -1,0 +1,40 @@
+@mixin center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin hilite ($width: 7px){
+  border: $width solid $c_blue;
+  @include border-radius(4px);
+  @include box-shadow;
+  @include center;
+}
+
+@mixin bottom-col {
+  border-top: #eee solid 2px;
+  border-left: #eee solid 2px;
+  padding: 5px 0 0 10px;
+  @include border-radius;
+}
+
+@mixin solid($bg-color: #999){
+  background-color:$bg-color;
+  background-image:-webkit-linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,.1));
+  background-image:-moz-linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,.1));
+  background-image:linear-gradient(top, rgba(255,255,255,0.1), rgba(0,0,0,.1));
+  color: $bg-color - #555;
+  -webkit-box-shadow:
+      0 1px 3px rgba(0,0,0,.3),
+      0 0 0 1px $bg-color - #222,
+      0 1px 0 $bg-color + #222 inset;
+  -moz-box-shadow:
+      0 1px 3px rgba(0,0,0,.3),
+      0 0 0 1px $bg-color - #222,
+      0 1px 0 $bg-color + #222 inset;
+  box-shadow:
+      0 1px 3px rgba(0,0,0,.3),
+      0 0 0 1px $bg-color - #222,
+      0 1px 0 $bg-color + #222 inset;
+}
+
+

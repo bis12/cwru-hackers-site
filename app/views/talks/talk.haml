@@ -16,19 +16,18 @@
 #lower
   #left-col
     %span.s_title Description
-    -#TODO: Fix the extra space that is added into the uploaded text. It breaks the headers after an extra save
     :textile
       #{@talk.l_descrip}
     %ul.social
       %li
-        <iframe src="http://www.facebook.com/plugins/like.php?app_id=144093849000205&amp;href=change_this_later&amp;send=false&amp;layout=button_count&amp;width=50&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:21px;" allowTransparency="true"></iframe>
+        = @fb_link
       %li
         <a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
       %li
         <script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share"></script>
       %li
         <g:plusone></g:plusone>
-
+        
   #right-col
     %span.s_title Tags
     = partial 'tag/list', :locals => {:tags => @talk.tags}

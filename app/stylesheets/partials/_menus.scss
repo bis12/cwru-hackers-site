@@ -66,15 +66,18 @@ ul.hor{
   img {
     float: right;
     @include opacity(0.7);
+    margin-right: 7px;
   }
   a{
     text-decoration: none;
+    margin-left: 7px;
     &:hover{
       color: $link-color;
     }
   }
   h2 {
     color: #333;
+    margin-left: 7px;
   }
   li {
     margin: 0 13px 0px 13px;

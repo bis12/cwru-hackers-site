@@ -24,6 +24,8 @@ CwruHackersSite.controllers :talks do
 		else
 			@slide_link = 'No Slides Available...'
 		end
+		page_url = url_for "/talks/#{@talk.id}"
+		@fb_link = "<iframe src='http://www.facebook.com/plugins/like.php?app_id=184252821634371&amp;href=#{page_url}&amp;send=false&amp;layout=button_count&amp;width=150&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21' scrolling='no' frameborder='0' style='border:none; overflow:hidden; width:80px; height:21px;' allowTransparency='true'></iframe>"
 	  	render 'talks/talk'
 	  else
 		render 'talks/notalk'

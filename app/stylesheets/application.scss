@@ -28,6 +28,7 @@
 @import "compass/css3/box-shadow";
 @import "compass/css3/opacity";
 @import "compass/typography/lists/horizontal-list";
+@import "compass/css3/text-shadow";
 
 body {
   @include blueprint-typography(true);
@@ -192,7 +193,8 @@ a.t_link{
   background: #f9ffff;
   padding: 5px;
   @include border-radius(4px);
-  font-size: 1.1em;
+  font-size: 1.3em;
+  color: #022;
 }
 
 #small {

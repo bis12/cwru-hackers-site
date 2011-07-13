@@ -1,3 +1,14 @@
+- content_for :assets do
+  =stylesheet_link_tag 'jq-slider'
+  =javascript_include_tag 'selectToUISlider.jQuery'
+  :javascript
+    $(function(){
+      $('select#valueAA, select#valueBB').selectToUISlider({
+        labels: 0
+      });
+    });
+
+
 %span.title Talks
 %a#tb{:href => '/'} Go back to homepage
 %hr
@@ -5,9 +16,88 @@
   .warn
     =@warn
 .search-box
-  %h2 search 
-  %label{:for => 'keywords'}Keyword Search
-  %input#keywords{:type => 'text'}
+  %ul
+    %li.bigs
+      %h2 search 
+      %label{:for => 'keywords'}Keyword Search
+      %input#keywords{:type => 'text'}
+    %li.bigs
+      %h2 or select a tag
+      =partial 'tag/list', :locals => {:tags => @all_tags}
+    %li.big_r
+      %h2 and select a time range
+      -#TEMPORARY!!!!!!!!!!!!!!!
+      %label{:for => "valueAA"} From:
+      %select#valueAA{:name => "valueAA"}
+        %optgroup{:label => "2007"}
+          %option{:value => "01/07"} Jan 07
+          %option{:value => "02/07"} Feb 07
+          %option{:value => "03/07"} Mar 07
+          %option{:value => "04/07"} Apr 07
+          %option{:value => "07/07"} May 07
+          %option{:value => "07/07"} Jun 07
+          %option{:value => "07/07"} Jul 07
+          %option{:value => "08/07"} Aug 07
+          %option{:value => "09/07"} Sep 07
+          %option{:value => "10/07"} Oct 07
+          %option{:value => "11/07"} Nov 07
+          %option{:value => "12/07"} Dec 07
+        %optgroup{:label => "2008"}
+          %option{:value => "01/08"} Jan 08
+          %option{:value => "02/08"} Feb 08
+          %option{:value => "03/08"} Mar 08
+          %option{:value => "04/08"} Apr 08
+          %option{:value => "08/08"} May 08
+          %option{:value => "08/08"} Jun 08
+          %option{:value => "08/08"} Jul 08
+          %option{:value => "08/08"} Aug 08
+          %option{:value => "09/08"} Sep 08
+          %option{:value => "10/08"} Oct 08
+          %option{:value => "11/08"} Nov 08
+          %option{:value => "12/08"} Dec 08
+      %label{:for => "valueBB"} To:
+      %select#valueBB{:name => "valueBB"}
+        %optgroup{:label => "2006"}
+          %option{:value => "01/06"} Jan 06
+          %option{:value => "02/06"} Feb 06
+          %option{:value => "03/06"} Mar 06
+          %option{:value => "04/06"} Apr 06
+          %option{:value => "06/06"} May 06
+          %option{:value => "06/06"} Jun 06
+          %option{:value => "07/06"} Jul 06
+          %option{:value => "08/06"} Aug 06
+          %option{:value => "09/06"} Sep 06
+          %option{:value => "10/06"} Oct 06
+          %option{:value => "11/06"} Nov 06
+          %option{:value => "12/06"} Dec 06
+        %optgroup{:label => "2007"}
+          %option{:value => "01/07"} Jan 07
+          %option{:value => "02/07"} Feb 07
+          %option{:value => "03/07"} Mar 07
+          %option{:value => "04/07"} Apr 07
+          %option{:value => "07/07"} May 07
+          %option{:value => "07/07"} Jun 07
+          %option{:value => "07/07"} Jul 07
+          %option{:selected => "selected", :value => "08/07"} Aug 07
+          %option{:value => "09/07"} Sep 07
+          %option{:value => "10/07"} Oct 07
+          %option{:value => "11/07"} Nov 07
+          %option{:value => "12/07"} Dec 07
+        %optgroup{:label => "2008"}
+          %option{:value => "01/08"} Jan 08
+          %option{:value => "02/08"} Feb 08
+          %option{:value => "03/08"} Mar 08
+          %option{:value => "04/08"} Apr 08
+          %option{:value => "08/08"} May 08
+          %option{:value => "08/08"} Jun 08
+          %option{:value => "08/08"} Jul 08
+          %option{:value => "08/08"} Aug 08
+          %option{:value => "09/08"} Sep 08
+          %option{:value => "10/08"} Oct 08
+          %option{:value => "11/08"} Nov 08
+          %option{:value => "12/08"} Dec 08
+      -#REMOVE ONCE LOGIC IS IMPLEMENTED
+
 - @talks.each do |talk|
   .talk-box
     .right-t

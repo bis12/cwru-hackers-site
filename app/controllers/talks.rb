@@ -2,6 +2,7 @@ CwruHackersSite.controllers :talks do
 
   get :index do
 	  @talks = Talk.order("date DESC")
+	  @all_tags = Tag.all
 	  if @talks.length < 1 
 		  @warn = "There are no talks at this time!"
 	  end

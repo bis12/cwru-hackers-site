@@ -41,7 +41,7 @@
   =f.label 'Thumbnail'
   %br
   -if @talk.thumb?
-    =image_tag @talk.thumb.url, {:width => 150, :height => 150, :style => 'border: 2px solid #777; margin: 10px; margin-left: 100px;'}
+    =image_tag @talk.thumb.url, {:width => 133, :height => 80, :style => 'border: 2px solid #777; margin: 10px; margin-left: 100px;'}
     %br
     = f.check_box :remove_thumb
     %span Remove Thumbnail

@@ -202,7 +202,7 @@ a.t_link{
   padding-right: 30px;
 }
 
-.search-box {
+#search-box {
   margin: 5px;
   margin-bottom: 20px;
   padding: 5px;
@@ -210,19 +210,48 @@ a.t_link{
   @include border-radius(4px);
   $search-height: 130px;
   height: $search-height;
+  #keywords {
+    width: 175px;
+  }
+  #hide {
+    @include link-button(#ecb);
+    width: 55px;
+    float: right;
+    position: relative;
+    right: -25px;
+  }
   ul {
     @include horizontal-list(0px);
     li.bigs {
       border-right: 1px dashed $light-gray;
       padding-right: 10px;
       padding-left: 10px;
+      width: 20%;
       height: $search-height;
+      h2 {
+        color: #bc0;
+      }
     }
     li.big_r {
       height: $search-height;
-      padding-left: 10px;
-      width: 40%;
+      padding-left: 25px;
+      width: 50%;
     }
+  }
+}
+
+#show-search {
+  background-color: $success-bg-color;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  color: $success-color;
+  border: 1px solid $success-border-color;
+  @include border-radius(3px);
+  margin-left: 650px;
+  padding: 1px;
+  &:hover{
+    background-color: $success-bg-color - #222;
   }
 }
 

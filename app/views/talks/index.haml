@@ -4,27 +4,57 @@
   :javascript
     $(function(){
       $('select#valueAA, select#valueBB').selectToUISlider({
-        labels: 0
+        labels: 0,
+        tooltip: false
+      });
+      $( '#hide' ).click(function(){
+        $( '#search-box' ).hide( 'blind' , 700); 
+        setTimeout(function(){$( '#show-search').show(700);},700);
+        return false();
+      });
+      $( '#show-search' ).hide();
+      $( '#show-search' ).click(function(){
+        setTimeout(function(){$( '#search-box' ).show( 'blind' , 700);},700); 
+        $( '#show-search').hide(700);
+        return false();
+      });
+      $( '#keyword-search' ).click(function(){
+        $.ajax({
+          url: 'talks/search',
+          data:({term : $('#keywords').val()}),
+          success: function(data){
+            $( '#talks-area' ).html(data);
+          }
+        }); 
+      });
+      $( '#reset-search' ).click(function(){
+        $('#keywords').val('');
+        $('#keyword-search').click();
       });
     });
 
 
 %span.title Talks
 %a#tb{:href => '/'} Go back to homepage
+%a#show-search{:href => '#'} show search
 %hr
 - if not @warn.nil?
   .warn
     =@warn
-.search-box
+#search-box
   %ul
     %li.bigs
       %h2 search 
-      %label{:for => 'keywords'}Keyword Search
-      %input#keywords{:type => 'text'}
+      %form#key-search-form{:action => '#'}
+        %input#keywords{:type => 'text'}
+        %br
+        %input#keyword-search{:type => 'submit', :value => 'search'}
+        %button#reset-search reset
     %li.bigs
       %h2 or select a tag
       =partial 'tag/list', :locals => {:tags => @all_tags}
     %li.big_r
+      %a{:href => '#', :id => 'hide'}hide search
       %h2 and select a time range
       -#TEMPORARY!!!!!!!!!!!!!!!
       %label{:for => "valueAA"} From:
@@ -98,18 +128,6 @@
           %option{:value => "12/08"} Dec 08
       -#REMOVE ONCE LOGIC IS IMPLEMENTED
 
-- @talks.each do |talk|
-  .talk-box
-    .right-t
-      =link_to image_tag("#{talk.thumb.url}", {:height => 80, :width => 133}), "/talks/#{talk.id}"
-    .left-t
-    %span.talk_name
-      = link_to talk.title, "/talks/#{talk.id}"
-    %br
-    %span.date
-      = talk.date.strftime '%A %B %d, %Y'
-    = partial 'tag/list', :locals => {:tags => talk.tags}
-    %hr
-    :textile
-      #{talk.s_descrip}
-    = link_to "View the talk!", "/talks/#{talk.id}", :class => 't_link'
+#talks-area
+  =partial 'talks/talklist', :locals => {:talks => @talks}
+

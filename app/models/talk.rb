@@ -13,4 +13,8 @@ class Talk < ActiveRecord::Base
 	has_many :speakers
 	has_many :people, :through => :speakers
 
+	def search(term)
+		#TODO: Improve this search
+		return Talk.where "title like '%#{term}%' or s_descrip like '%#{term}%' or l_descrip like '%#{term}%'"
+	end
 end

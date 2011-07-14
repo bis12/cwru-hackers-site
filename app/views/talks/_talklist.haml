@@ -1,0 +1,15 @@
+- locals[:talks].each do |talk|
+  .talk-box
+    .right-t
+      =link_to image_tag("#{talk.thumb.url}", {:height => 80, :width => 133}), "/talks/#{talk.id}"
+    .left-t
+    %span.talk_name
+      = link_to talk.title, "/talks/#{talk.id}"
+    %br
+    %span.date
+      = talk.date.strftime '%A %B %d, %Y'
+    = partial 'tag/list', :locals => {:tags => talk.tags}
+    %hr
+    :textile
+      #{talk.s_descrip}
+    = link_to "View the talk!", "/talks/#{talk.id}", :class => 't_link'

@@ -8,6 +8,12 @@ CwruHackersSite.controllers :talks do
 	  end
 	  render 'talks/index'
   end
+  
+  get :talk, :map =>'/talks/search' do
+	  #TODO: Fix/improve this search
+	  talks = Talk.new.search(params[:term])
+	  partial 'talks/talklist', :locals => {:talks => talks}
+  end
 
   get :talk, :map => '/talks/:id' do
 	  if Talk.exists? params[:id] 
